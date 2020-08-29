@@ -4,7 +4,7 @@ import './header.styles.css';
 const Header = (props) => {
 
   return (
-    <header className="header-area header-sticky background-header background-header-position">
+    <header className="header-area header-sticky background-header">
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -31,7 +31,7 @@ const Header = (props) => {
                   </ul>
                 </li>
               </ul>
-              <a className='menu-trigger' href='/'>
+              <a className='menu-trigger'>
                 <span>Menu</span>
               </a>
               {/* { <!-- ***** Menu End ***** -->} */}
