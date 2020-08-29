@@ -4,16 +4,6 @@ const LandingPage  = (props) => {
 
   return (
     <div>
-      {/* {<!-- ***** Preloader Start ***** -->} */}
-      <div id="preloader">
-          <div className="jumper">
-              <div></div>
-              <div></div>
-              <div></div>
-          </div>
-      </div>  
-      {/* {<!-- ***** Preloader End ***** -->} */}
-    
     
       {/* {<!-- ***** Header Area Start ***** -->} */}
       <header className="header-area header-sticky">
@@ -22,7 +12,7 @@ const LandingPage  = (props) => {
                 <div className="col-12">
                     <nav className="main-nav">
                         {/* {<!-- ***** Logo Start ***** -->} */}
-                        <a href="" className="logo">Bookmark Easy</a>
+                        <a href="/" className="logo">Bookmark Easy</a>
                         {/* {<!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->} */}
                         <ul className="nav">
@@ -30,16 +20,16 @@ const LandingPage  = (props) => {
                             <li className="scroll-to-section"><a href="#about">About</a></li>
                             <li className="scroll-to-section"><a href="#services">Services</a></li>
                             <li className="submenu">
-                                <a href="">Drop Down</a>
+                                <a href="/">Drop Down</a>
                                 <ul>
-                                    <li><a href="">About Us</a></li>
-                                    <li><a href="">Features</a></li>
-                                    <li><a href="">FAQ's</a></li>
-                                    <li><a href="">Blog</a></li>
+                                    <li><a href="/">About Us</a></li>
+                                    <li><a href="/">Features</a></li>
+                                    <li><a href="/">FAQ's</a></li>
+                                    <li><a href="/">Blog</a></li>
                                 </ul>
                             </li>
                         </ul>
-                        <a className='menu-trigger'>
+                        <a className='menu-trigger' href='/'>
                             <span>Menu</span>
                         </a>
                        {/* { <!-- ***** Menu End ***** -->} */}
@@ -61,7 +51,7 @@ const LandingPage  = (props) => {
                       <div className="left-text col-lg-7 col-md-7 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                           <h1>All-in-one<br /> <strong>Bookmark Manager</strong></h1>
                           <p>Intuitive. Powerful. Runs everywhere</p>
-                          <a href="" class="trigger-btn" data-toggle="modal" data-target="#signup" className="main-button-slider">Sign Up</a>
+                          <a href="/" class="trigger-btn" data-toggle="modal" data-target="#signup" className="main-button-slider">Sign Up</a>
                       </div>
                       <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                           <img src="assets/images/slider-icon.png" className="rounded img-fluid d-block mx-auto" alt="First Vector Graphic" />
@@ -154,10 +144,10 @@ const LandingPage  = (props) => {
                 </div>
                 <div className="col-lg-5 col-md-12 col-sm-12">
                     <ul className="social">
-                        <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i className="fa fa-github"></i></a></li>
+                        <li><a href="/"><i className="fa fa-facebook"></i></a></li>
+                        <li><a href="/"><i className="fa fa-twitter"></i></a></li>
+                        <li><a href="/"><i className="fa fa-linkedin"></i></a></li>
+                        <li><a href="/"><i className="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
