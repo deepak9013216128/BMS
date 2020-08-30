@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.styles.css';
 
+import Logo from '../assets/logo/logo_transparent.png';
+
 const Header = (props) => {
 
   return (
@@ -10,7 +12,9 @@ const Header = (props) => {
           <div className="col-12">
             <nav className="main-nav">
               {/* {<!-- ***** Logo Start ***** -->} */}
-              <a href="/" className="logo">Bookmark Easy</a>
+              <a href="/" className="logo">
+                <img src={Logo} className="logo-img" />
+              </a>
               {/* {<!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->} */}
               <ul className="nav">

@@ -17,24 +17,12 @@ const Dashboard = (props) => {
             <TabList />
             <div class="card-body">
               <div className="row">
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
-                <div className="col-4 mb-3">
-                  <Category />
-                </div>
+                <Category />
+                <Category />
+                <Category />
+                <Category />
+                <Category />
+                <Category />
               </div>
             </div>
           </div>
