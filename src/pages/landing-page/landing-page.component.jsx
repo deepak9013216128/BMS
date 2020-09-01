@@ -1,5 +1,8 @@
 import React from 'react';
 
+import SignUp from '../../components/signup/signup.component';
+import Login from '../../components/login/login.component';
+import ConfirmationPopup from '../../components/confirmation-popup/confirmation-popup.component';
 const LandingPage  = (props) => {
 
   return (
@@ -51,7 +54,7 @@ const LandingPage  = (props) => {
                       <div className="left-text col-lg-7 col-md-7 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                           <h1>All-in-one<br /> <strong>Bookmark Manager</strong></h1>
                           <p>Intuitive. Powerful. Runs everywhere</p>
-                          <a href="/" class="trigger-btn" data-toggle="modal" data-target="#signup" className="main-button-slider">Sign Up</a>
+                          <a href="/" className="trigger-btn" data-toggle="modal" data-target="#signup" className="main-button-slider">Sign Up</a>
                       </div>
                       <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                           <img src="assets/images/slider-icon.png" className="rounded img-fluid d-block mx-auto" alt="First Vector Graphic" />
@@ -153,6 +156,9 @@ const LandingPage  = (props) => {
             </div>
         </div>
     	</footer>
+        <SignUp />
+        <Login />
+        <ConfirmationPopup />
   	</div>
   )
 };

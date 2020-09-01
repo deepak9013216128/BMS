@@ -4,16 +4,16 @@ import './tab-list.styles.css';
 
 const TabList = (props) => {
   return (
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
+    <div className="card-header tabs-list">
+      <ul className="nav nav-tabs card-header-tabs">
+        <li className="nav-item">
+          <a className="nav-link active" href="/dashboard">Active</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li className="nav-item">
+          <a className="nav-link" href="/dashboard">Link</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li className="nav-item">
+          <a className="nav-link disabled" href="/dashboard" aria-disabled="true">Disabled</a>
         </li>
       </ul>
     </div>

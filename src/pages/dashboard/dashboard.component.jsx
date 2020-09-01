@@ -11,11 +11,11 @@ const Dashboard = (props) => {
   return (
     <div className='dashboard'>
       <Header />
-      <section className="section" id="about">
+      <section className="section dashboard-section" >
         <div className="container">
-          <div class="card">
+          <div className="card">
             <TabList />
-            <div class="card-body">
+            <div className="card-body">
               <div className="row">
                 <Category />
                 <Category />

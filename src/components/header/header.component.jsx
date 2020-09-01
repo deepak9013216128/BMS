@@ -13,7 +13,7 @@ const Header = (props) => {
             <nav className="main-nav">
               {/* {<!-- ***** Logo Start ***** -->} */}
               <a href="/" className="logo">
-                <img src={Logo} className="logo-img" />
+                <img src={Logo} className="logo-img" alt='logo' />
               </a>
               {/* {<!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->} */}
@@ -22,22 +22,22 @@ const Header = (props) => {
                 <li className="scroll-to-section"><a href="/mybookmarks">My Bookmarks</a></li>
                 <li className="scroll-to-section"><a href="/setting">Setting</a></li>
                 <li className="submenu">
-                  <a href="/">Tools</a>
+                  <a href="#">Tools</a>
                   <ul>
                     <li><a href="/">Install Browser Buttons</a></li>
                   </ul>
                 </li>
                 <li className="submenu">
-                  <a href="/profile">User</a>
+                  <a href="#">User</a>
                   <ul>
                     <li><a href="/profile">Account</a></li>
                     <li><a href="/">Logout</a></li>
                   </ul>
                 </li>
               </ul>
-              <a className='menu-trigger'>
+              <span className='menu-trigger'>
                 <span>Menu</span>
-              </a>
+              </span>
               {/* { <!-- ***** Menu End ***** -->} */}
             </nav>
           </div>

@@ -5,19 +5,19 @@ import './success-popup.styles.css';
 const SuccessPopup = (props) => {
 
   return (
-    <div id="successPopup" class="modal fade">
-      <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="icon-box">
-              <i class="material-icons">&#xE876;</i>
+    <div id="successPopup" className="modal fade">
+      <div className="modal-dialog modal-confirm">
+        <div className="modal-content">
+          <div className="modal-header">
+            <div className="icon-box">
+              <i className="material-icons">&#xE876;</i>
             </div>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <div class="modal-body text-center">
-            <h4>Great!</h4>	
+          <div className="modal-body text-center">
+            <h4>Great!</h4>
             <p>Your account has been created successfully.</p>
-            <button class="btn btn-success" data-dismiss="modal"><span>Start Exploring</span> <i class="material-icons">&#xE5C8;</i></button>
+            <button className="btn btn-success" data-dismiss="modal"><span>Start Exploring</span> <i className="material-icons">&#xE5C8;</i></button>
           </div>
         </div>
       </div>
