@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import './category.styles.css'
+import Setting from './setting/setting.component';
 
 const Category = (props) => {
   const [active, setActive] = useState(true);
@@ -14,18 +14,18 @@ const Category = (props) => {
             <button className="btn btn-link text-light">News</button>
           </h5>
           <div className="ml-auto mb-0">
-            <button className="btn btn-link text-light"><i className="fa fa-cog"></i></button>
+            <button className="btn btn-link text-light" >
+              <Setting />
+            </button>
           </div>
           <div>
-            <button
-              className="btn btn-link text-light"
-              id="headingOne"
-              data-toggle="collapse"
-              data-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
+            <button className="btn btn-link text-light">
               <i
+                id="headingOne"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
                 className={`fa fa-chevron-${active ? 'down' : 'up'}`}
                 onClick={toggle}
               ></i>
@@ -44,6 +44,7 @@ const Category = (props) => {
           </div>
         </div>
       </div>
+
     </div>
   )
 }

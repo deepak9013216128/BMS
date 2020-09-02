@@ -5,6 +5,7 @@ import TabList from '../../components/tab-list/tab-list.component';
 
 import './dashboard.styles.css'
 import Category from '../../components/category/category.component';
+import Footer from '../../components/footer/footer.component';
 
 const Dashboard = (props) => {
 
@@ -26,9 +27,9 @@ const Dashboard = (props) => {
               </div>
             </div>
           </div>
-          <div style={{ widows: '400px', height: '2000px' }}></div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }
