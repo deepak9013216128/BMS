@@ -691,7 +691,7 @@ header
   .header-area .main-nav .nav .submenu > ul > li > a:hover {
     color: #f55858;
   }
-  .header-area .main-nav .nav li.submenu ul ,.category-setting ul{
+  .header-area .main-nav .nav li.submenu ul {
     position: relative;
     visibility: inherit;
     opacity: 1;
@@ -703,28 +703,24 @@ header
     box-shadow: none;
     height: 0px;
   }
-  .header-area .main-nav .nav li.submenu ul li a ,.category-setting ul li a{
+  .header-area .main-nav .nav li.submenu ul li a {
     font-size: 12px;
     font-weight: 400;
   }
-  .header-area .main-nav .nav li.submenu ul li a:hover:before ,
-  .category-setting ul li a:before{
+  .header-area .main-nav .nav li.submenu ul li a:hover:before {
     width: 0px;
   }
-  .header-area .main-nav .nav li.submenu ul.active ,.category-setting ul.active{
+  .header-area .main-nav .nav li.submenu ul.active {
     height: auto !important;
   }
-  .header-area .main-nav .nav li.submenu:after ,
-  .category-setting:after {
+  .header-area .main-nav .nav li.submenu:after {
     color: #3b566e;
     right: 25px;
     font-size: 14px;
     top: 15px;
   }
   .header-area .main-nav .nav li.submenu:hover ul,
-  .header-area .main-nav .nav li.submenu:focus ul ,
-  .category-setting:hover ul,
-  .category-setting:focus ul{
+  .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
 }
