@@ -402,6 +402,7 @@ header
 
 .category-setting {
   padding-right: 0;
+  cursor: pointer;
 }
 
 .header-area .main-nav .nav li.submenu:after {

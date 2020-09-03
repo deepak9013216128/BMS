@@ -14,9 +14,7 @@ const Category = (props) => {
             <button className="btn btn-link text-light">News</button>
           </h5>
           <div className="ml-auto mb-0">
-            <button className="btn btn-link text-light" >
-              <Setting />
-            </button>
+            <Setting />
           </div>
           <div>
             <button className="btn btn-link text-light">

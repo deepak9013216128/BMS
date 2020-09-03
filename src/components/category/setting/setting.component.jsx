@@ -6,7 +6,7 @@ const Setting = (props) => {
   const [active, setActive] = useState(true);
   const toggle = () => setActive((active) => !active)
   return (
-    <div className="category-setting">
+    <div className="category-setting p-2">
       <ul className='category-setting-section'>
         <li><a href="/">Rename Category</a></li>
         <li><a href="/">Move to Another Tab</a></li>

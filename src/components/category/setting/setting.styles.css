@@ -1,4 +1,9 @@
+.category-setting ul{
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
 .category-setting-section{
-  position: absolute;
   right: -100px;
 }
