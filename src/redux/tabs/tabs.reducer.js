@@ -11,13 +11,13 @@ const INTIAL_STATE = {
       id: "tab2",
       name: "news",
       body: "......",
-      category: ["category8", "category9", "category10", "category11"]
+      category: ["category8", "category9", "category10"]
     },
     "tab3": {
       id: "tab3",
       name: "Web Development",
       body: "......",
-      category: ["category12", "category13", "category14", "category15", "category16", "category17"]
+      category: ["category11", "category12", "category13", "category14", "category15", "category16", "category17"]
     },
   },
   allIds: ["tab1", "tab2", "tab3"]
