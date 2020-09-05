@@ -34,7 +34,7 @@ function App() {
     <Suspense fallback={<Preloader />}>
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route exact path='/dashboard' component={Dashboard} />
+        <Route path='/dashboard' component={Dashboard} />
       </Switch>
     </Suspense>
   );
