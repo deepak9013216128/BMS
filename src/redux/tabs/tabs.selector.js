@@ -8,11 +8,7 @@ export const selectTabs = createSelector(
   tabs => tabs.allIds.map(id => ({ name: tabs.byId[id].name, id: tabs.byId[id].id }))
 )
 
-export const selectCategoryIds = createSelector(
+export const selectCategoryIds = () => createSelector(
   [activeTab],
   (tab) => tab.category
 )
-// export const selectCategoryIds = () => createSelector(
-//   [activeTab],
-//   (tab) => tab.category
-// )

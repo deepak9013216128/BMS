@@ -9,9 +9,12 @@ import { useMemo } from 'react';
 
 const CategoryList = (props) => {
   const { categoryIds } = props;
+
+  const categoryList = categoryIds.map(
+    categoryId => <Category key={categoryId} categoryId={categoryId} />
+  )
+
   console.log('Category List', props)
-  const categoryList = categoryIds.map(categoryId => <Category key={categoryId} categoryId={categoryId} />)
-  console.log(categoryList)
   return (
     <div className="row">
       {
@@ -21,15 +24,12 @@ const CategoryList = (props) => {
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  categoryIds: selectCategoryIds
-})
-// const mapStateToProps = () => {
-//   const CategoryIds = selectCategoryIds()
-//   console.log('mapStateToProps')
-//   return (state, props) => ({
-//     categoryIds: CategoryIds(state, props)
-//   })
-// }
+const mapStateToProps = () => {
+  const CategoryIds = selectCategoryIds()
+  console.log('mapStateToProps')
+  return (state, props) => ({
+    categoryIds: CategoryIds(state, props)
+  })
+}
 
 export default connect(mapStateToProps)(CategoryList);
