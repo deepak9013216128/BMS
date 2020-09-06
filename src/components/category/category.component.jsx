@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './category.styles.css'
 import Setting from './setting/setting.component';
+import { selectCategory } from '../../redux/category/category.selector';
 
 const Category = (props) => {
   const [active, setActive] = useState(true);
   const toggle = () => setActive((active) => !active)
+  const { category } = props;
+  console.log("Category", props)
   return (
     <div id="accordion" className="col-12 col-sm-6 col-lg-4 mb-3">
       <div className="card">
         <div className="card-header p-0 d-flex category_title_background">
           <h5 className="mb-0">
-            <button className="btn btn-link text-light">News</button>
+            <button className="btn btn-link text-light">{category.name}</button>
           </h5>
           <div className="ml-auto mb-0">
             <Setting />
@@ -47,4 +52,8 @@ const Category = (props) => {
   )
 }
 
-export default Category;
+const mapStateToProps = createStructuredSelector({
+  category: selectCategory
+})
+
+export default connect(mapStateToProps)(Category);

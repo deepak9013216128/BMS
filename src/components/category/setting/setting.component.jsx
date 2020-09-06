@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './setting.styles.css';
 
 const Setting = (props) => {
-  const [active, setActive] = useState(true);
-  const toggle = () => setActive((active) => !active)
+
   return (
     <div className="category-setting p-2">
       <ul className='category-setting-section'>

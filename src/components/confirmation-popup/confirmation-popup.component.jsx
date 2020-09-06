@@ -10,7 +10,7 @@ const ConfirmationPopup = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <div className="icon-box">
-              <i className="material-icons" className='fa fa-check'></i>
+              <i className="material-icons fa fa-check"></i>
             </div>
             <h4 className="modal-title">Awesome!</h4>
           </div>
