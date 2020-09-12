@@ -4,13 +4,15 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
 
 import Header from '../../components/header/header.component';
+import MenuBar from '../../components/menu-bar/menu-bar.component';
 import TabList from '../../components/tab-list/tab-list.component';
-import Footer from '../../components/footer/footer.component';
 import CategoryList from '../../components/category-list/category-list.component';
-
-import './dashboard.styles.css'
 import BookmarkForm from '../../components/bookmark-form/bookmark-form.component';
+import Footer from '../../components/footer/footer.component';
+
 import { selectToggleBookmarkForm } from '../../redux/bookmarks/bookmarks.selector';
+
+import './dashboard.styles.css';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -27,8 +29,9 @@ const Dashboard = ({ toggleBookmarkForm }) => {
       <Header />
       <section className="section dashboard-section" >
         <div className="container">
+          <MenuBar />
           <div className="card">
-            <TabList />
+            <TabList activeTab={activeTab} />
             <div className="card-body">
               <CategoryList activeTab={activeTab} />
             </div>

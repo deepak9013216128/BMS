@@ -12,14 +12,12 @@ function useQuery() {
 }
 
 const TabList = (props) => {
-  const { tabs } = props;
-  let query = useQuery()
-  const activeTab = query.get('tab') ? query.get('tab') : 'tab1';
-  // console.log(query.get('tab'))
+  const { tabs, activeTab } = props;
+
   return (
     <div className="card-header tabs-list">
       <ul className="nav nav-tabs card-header-tabs">
-        {tabs.map((tab, idx) => (
+        {tabs.map((tab) => (
           <li className="nav-item" key={tab.id}>
             <Link
               className={`nav-link ${tab.id === activeTab ? 'active' : ''}`}

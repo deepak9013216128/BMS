@@ -43,14 +43,13 @@ const Category = (props) => {
           aria-labelledby="headingOne"
         // data-parent="#accordion"
         >
-          {
-            bookmarks.map(
-              bookmarkId => <Bookmark key={bookmarkId} bookmarkId={bookmarkId} />
-            )
+          {bookmarks.map(
+            bookmarkId => (
+              <Bookmark key={bookmarkId} bookmarkId={bookmarkId} />
+            ))
           }
         </div>
       </div>
-
     </div>
   )
 }

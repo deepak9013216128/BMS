@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './bookmark-form.styles.css'
 
@@ -52,4 +52,4 @@ const BookmarkForm = (props) => {
   )
 }
 
-export default BookmarkForm;
+export default memo(BookmarkForm);

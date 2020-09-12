@@ -30,6 +30,7 @@ function App() {
   useEffect(() => {
     addScripts();
   }, [])
+
   return (
     <Suspense fallback={<Preloader />}>
       <Switch>
