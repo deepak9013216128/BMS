@@ -4,8 +4,6 @@ import { createStructuredSelector } from 'reselect';
 
 import Category from '../category/category.component';
 import { selectCategoryIds } from '../../redux/tabs/tabs.selector';
-import { useMemo } from 'react';
-
 
 const CategoryList = (props) => {
   const { categoryIds } = props;
@@ -14,7 +12,7 @@ const CategoryList = (props) => {
     categoryId => <Category key={categoryId} categoryId={categoryId} />
   )
 
-  console.log('Category List', props)
+  // console.log('Category List', props)
   return (
     <div className="row">
       {
@@ -25,10 +23,10 @@ const CategoryList = (props) => {
 }
 
 const mapStateToProps = () => {
-  const CategoryIds = selectCategoryIds()
-  console.log('mapStateToProps')
-  return (state, props) => ({
-    categoryIds: CategoryIds(state, props)
+  const categoryIds = selectCategoryIds()
+  // console.log('mapStateToProps')
+  return createStructuredSelector({
+    categoryIds
   })
 }
 

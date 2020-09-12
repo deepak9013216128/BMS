@@ -10,7 +10,7 @@ const Bookmark = (props) => {
 
   const { bookmark } = props;
   const { url, title } = bookmark;
-  console.log(props)
+  // console.log(props)
   return (
     <div className="card-body p-2">
       <p className='m-0'>

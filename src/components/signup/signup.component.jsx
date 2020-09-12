@@ -29,7 +29,7 @@ const SignUp = (props) => {
                 <input type="password" className="form-control" name="password" placeholder="Password" required="required" />
               </div>
               <div className="form-group">
-                <input type="confirmpassword" className="form-control" name="confirmpassword" placeholder="Confirm Password" required="required" />
+                <input type="password" className="form-control" name="confirmpassword" placeholder="Confirm Password" required="required" />
               </div>
               <div className="form-group">
                 <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>

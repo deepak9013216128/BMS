@@ -10,7 +10,7 @@ import bookmarksReducer from './bookmarks/bookmarks.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: ['user', 'tabs', 'category', 'bookmarks']
 }
 
 const rootReducer = combineReducers({
