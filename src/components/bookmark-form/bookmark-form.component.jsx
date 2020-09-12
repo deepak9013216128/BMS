@@ -2,6 +2,10 @@ import React from 'react';
 
 import './bookmark-form.styles.css'
 
+import FormInput from '../form-input/form-input.component';
+import FormButton from '../form-button/form-button.component';
+import FormTextarea from '../form-textarea/form-textarea.component';
+
 const BookmarkForm = (props) => {
 
   return (
@@ -14,21 +18,32 @@ const BookmarkForm = (props) => {
           </div>
           <div className="modal-body">
             <form>
-              <div className="form-group">
-                <input type="text" className="form-control" name="title" placeholder="Title" required="required" />
-              </div>
-              <div className="form-group">
-                <input type="text" className="form-control" name="url" placeholder="URL" required="required" />
-              </div>
-              <div className="form-group">
-                <input type="text" className="form-control" name="tags" placeholder="Seprate tags by commas" />
-              </div>
-              <div className="form-group">
-                <textarea type="text" className="form-control" name="notes" placeholder="Notes"></textarea>
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Add</button>
-              </div>
+              <FormInput
+                name='title'
+                placeholder='Title'
+                type='text'
+                required
+              />
+              <FormInput
+                name='url'
+                placeholder='URL'
+                type='text'
+                required
+              />
+              <FormTextarea
+                name='tags'
+                placeholder='Seprate tags by commas'
+                type='text'
+              />
+              <FormTextarea
+                name='notes'
+                placeholder='Notes'
+                type='text'
+              />
+              <FormButton
+                type='submit'
+                label='Add'
+              />
             </form>
           </div>
         </div>
