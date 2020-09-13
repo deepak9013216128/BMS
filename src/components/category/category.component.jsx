@@ -39,7 +39,7 @@ const Category = (props) => {
         </div>
         <div
           id={categoryId}
-          className="collapse show"
+          className="collapse show" // show is use for collapse and expand the category
           aria-labelledby="headingOne"
         // data-parent="#accordion"
         >

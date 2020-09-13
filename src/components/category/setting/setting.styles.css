@@ -1,14 +1,14 @@
-.category-setting ul{
+.custom-dropdown ul{
   transition-property: all;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
 }
-.category-setting-section{
+.custom-dropdown-section{
   right: -100px;
 }
 @media (max-width: 991px) {
-  .category-setting-section{
+  .custom-dropdown-section{
     right: -50px;
   }
 }

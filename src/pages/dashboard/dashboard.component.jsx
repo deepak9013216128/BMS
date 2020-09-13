@@ -7,7 +7,6 @@ import Header from '../../components/header/header.component';
 import MenuBar from '../../components/menu-bar/menu-bar.component';
 import TabList from '../../components/tab-list/tab-list.component';
 import CategoryList from '../../components/category-list/category-list.component';
-import BookmarkForm from '../../components/bookmark-form/bookmark-form.component';
 import Footer from '../../components/footer/footer.component';
 
 import { selectToggleBookmarkForm } from '../../redux/bookmarks/bookmarks.selector';
@@ -39,7 +38,6 @@ const Dashboard = ({ toggleBookmarkForm }) => {
         </div>
       </section>
       <Footer />
-      <BookmarkForm />
     </div>
   )
 }

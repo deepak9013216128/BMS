@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import BookmarkForm from '../../bookmark-form/bookmark-form.component';
+
 import { toggleBookmarkForm } from '../../../redux/bookmarks/bookmarks.action';
 
 import './setting.styles.css';
@@ -8,8 +10,8 @@ import './setting.styles.css';
 const Setting = ({ toggleBookmarkForm }) => {
 
   return (
-    <div className="category-setting p-2">
-      <ul className='category-setting-section'>
+    <div className="custom-dropdown p-2">
+      <ul className='custom-dropdown-section'>
         <li><a href="/">Rename Category</a></li>
         <li><a href="/">Move to Another Tab</a></li>
         <li><a href="/">Sort A-Z</a></li>
@@ -26,6 +28,7 @@ const Setting = ({ toggleBookmarkForm }) => {
         </li>
         <li><a href="/">Delete Category</a></li>
       </ul>
+      <BookmarkForm />
     </div>
   )
 }
