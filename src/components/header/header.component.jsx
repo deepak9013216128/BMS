@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './header.styles.css';
 
 import Logo from '../assets/logo/logo_transparent.png';
@@ -11,34 +13,30 @@ const Header = (props) => {
         <div className="row">
           <div className="col-12">
             <nav className="main-nav">
-              {/* {<!-- ***** Logo Start ***** -->} */}
-              <a href="/" className="logo">
+              <Link to="/" className="logo">
                 <img src={Logo} className="logo-img" alt='logo' />
-              </a>
-              {/* {<!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->} */}
+              </Link>
               <ul className="nav">
-                <li className="scroll-to-section"><a href="/dashboard" className="active">Dashboard</a></li>
-                <li className="scroll-to-section"><a href="/mybookmarks">My Bookmarks</a></li>
-                <li className="scroll-to-section"><a href="/setting">Setting</a></li>
+                <li className="scroll-to-section"><Link to="/dashboard" className="active">Dashboard</Link></li>
+                <li className="scroll-to-section"><Link to="/mybookmarks">My Bookmarks</Link></li>
+                <li className="scroll-to-section"><Link to="/setting">Setting</Link></li>
                 <li className="submenu">
-                  <a href="#">Tools</a>
+                  <Link to='#'>Tools</Link>
                   <ul>
-                    <li><a href="/">Install Browser Buttons</a></li>
+                    <li><Link to="/">Install Browser Buttons</Link></li>
                   </ul>
                 </li>
                 <li className="submenu">
-                  <a href="#">User</a>
+                  <Link to='#'>User</Link>
                   <ul>
-                    <li><a href="/profile">Account</a></li>
-                    <li><a href="/">Logout</a></li>
+                    <li><Link to="/profile">Account</Link></li>
+                    <li><Link to="/">Logout</Link></li>
                   </ul>
                 </li>
               </ul>
               <span className='menu-trigger'>
                 <span>Menu</span>
               </span>
-              {/* { <!-- ***** Menu End ***** -->} */}
             </nav>
           </div>
         </div>

@@ -1,15 +1,11 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectTabs } from '../../redux/tabs/tabs.selector';
 
 import './tab-list.styles.css';
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 
 const TabList = (props) => {
   const { tabs, activeTab } = props;

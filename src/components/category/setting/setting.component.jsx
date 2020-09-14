@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import BookmarkForm from '../../bookmark-form/bookmark-form.component';
 
@@ -12,21 +13,21 @@ const Setting = ({ toggleBookmarkForm }) => {
   return (
     <div className="custom-dropdown p-2">
       <ul className='custom-dropdown-section'>
-        <li><a href="/">Rename Category</a></li>
-        <li><a href="/">Move to Another Tab</a></li>
-        <li><a href="/">Sort A-Z</a></li>
-        <li><a href="/">Sort Z-A</a></li>
+        <li><Link to='#'>Rename Category</Link></li>
+        <li><Link to='#'>Move to Another Tab</Link></li>
+        <li><Link to='#'>Sort A-Z</Link></li>
+        <li><Link to='#'>Sort Z-A</Link></li>
         <li>
-          <a
-            href="#"
+          <Link
+            to='#'
             onClick={toggleBookmarkForm}
             data-toggle="modal"
             data-target="#add-bookmark"
             data-backdrop="static"
             data-keyboard="false"
-          >Add Bookmark</a>
+          >Add Bookmark</Link>
         </li>
-        <li><a href="/">Delete Category</a></li>
+        <li><Link to='#'>Delete Category</Link></li>
       </ul>
       <BookmarkForm />
     </div>

@@ -14,7 +14,12 @@ const Bookmark = (props) => {
   return (
     <div className="card-body p-2">
       <p className='m-0'>
-        <a href={url} target='_blank' className="card-link" data-text={title}>{title}</a>
+        <a
+          href={url}
+          target='_blank'
+          className="card-link"
+          rel="noopener noreferrer"
+        >{title}</a>
       </p>
     </div >
   )

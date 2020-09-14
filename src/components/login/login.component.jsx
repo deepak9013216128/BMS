@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Logo from '../assets/logo/logo_transparent.png';
 
@@ -44,7 +45,7 @@ const Login = (props) => {
             </form>
           </div>
           <div className="modal-footer">
-            <a href="#">Forgot Password?</a>
+            <Link to='#'>Forgot Password?</Link>
           </div>
         </div>
       </div>

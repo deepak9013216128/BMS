@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CategoryDropdown = ({ toggleBookmarkForm }) => {
 
   return (
     <div className="custom-dropdown">
-      <a className="nav-link" href="#">Categories</a>
+      <Link to='#' className="nav-link">Categories</Link>
       <ul className='custom-dropdown-section'>
-        <li><a href="/">Sort A-Z</a></li>
-        <li><a href="/">Sort Z-A</a></li>
-        <li><a href="/">Collapse all</a></li>
-        <li><a href="/">Expand all</a></li>
+        <li><Link to='#'>Sort A-Z</Link></li>
+        <li><Link to='#'>Sort Z-A</Link></li>
+        <li><Link to='#'>Collapse all</Link></li>
+        <li><Link to='#'>Expand all</Link></li>
       </ul>
     </div>
   )

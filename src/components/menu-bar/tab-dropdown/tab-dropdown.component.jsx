@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TabDropdown = ({ toggleBookmarkForm }) => {
 
   return (
     <div className="custom-dropdown">
-      <a className="nav-link" href="#">Tabs</a>
+      <Link to='#' className="nav-link">Tabs</Link>
       <ul className='custom-dropdown-section'>
-        <li><a href="/">Rename Tab</a></li>
-        <li><a href="/">Sort A-Z</a></li>
-        <li><a href="/">Sort Z-A</a></li>
-        <li><a href="/">Change Tab Order</a></li>
-        <li><a href="/">Delete Tab</a></li>
+        <li><Link to='#'>Rename Tab</Link></li>
+        <li><Link to='#'>Sort A-Z</Link></li>
+        <li><Link to='#'>Sort Z-A</Link></li>
+        <li><Link to='#'>Change Tab Order</Link></li>
+        <li><Link to='#'>Delete Tab</Link></li>
       </ul>
     </div>
   )

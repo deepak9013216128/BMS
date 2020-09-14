@@ -19,7 +19,7 @@ const FormInput = (props) => {
 }
 
 export default FormInput;
-{/* <div className="form-group">
+/* <div className="form-group">
         <input
           type={type}
           className="form-control"
@@ -27,4 +27,4 @@ export default FormInput;
           placeholder={placeholder}
           required={required}
         />
-      </div> */}
+      </div> */
