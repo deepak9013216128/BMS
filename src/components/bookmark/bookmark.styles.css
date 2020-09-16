@@ -9,3 +9,6 @@
 .card-body p a:hover {
   text-decoration: underline !important;
 }
+abbr {
+  text-decoration: none;
+}

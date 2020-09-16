@@ -20,7 +20,7 @@ const TabForm = ({ totalTabCount, addTab }) => {
     try {
       const tab = {
         id: `tab${totalTabCount + 1}`,
-        name: name,
+        name: name.trim(),
         body: '...',
         category: []
       }
@@ -48,6 +48,9 @@ const TabForm = ({ totalTabCount, addTab }) => {
                 placeholder='Name'
                 type='text'
                 required
+                pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$"
+                maxLength="30"
+                title='3 and more Alphabetic letter'
                 handleChange={handleChange}
               />
               <FormButton
