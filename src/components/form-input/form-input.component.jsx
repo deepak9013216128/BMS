@@ -3,7 +3,7 @@ import React from "react";
 import './form-input.styles.css';
 
 const FormInput = (props) => {
-  const { name, type, required, placeholder } = props;
+  const { name, type, required, placeholder, handleChange } = props;
   console.log(name)
   return (
     <div className="wrap-input100 validate-input">
@@ -12,6 +12,7 @@ const FormInput = (props) => {
         type={type}
         name={name}
         required={required}
+        onChange={handleChange}
       />
       <span className="focus-input100" data-placeholder={placeholder}></span>
     </div>

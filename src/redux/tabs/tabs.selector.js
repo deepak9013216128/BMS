@@ -10,5 +10,10 @@ export const selectTabs = createSelector(
 
 export const selectCategoryIds = () => createSelector(
   [activeTab],
-  (tab) => tab.category
+  (tab) => tab ? tab.category : null
+)
+
+export const selectTotalTab = createSelector(
+  [tabs],
+  tabs => tabs.totalTab
 )

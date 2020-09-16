@@ -8,9 +8,9 @@ import { selectCategoryIds } from '../../redux/tabs/tabs.selector';
 const CategoryList = (props) => {
   const { categoryIds } = props;
 
-  const categoryList = categoryIds.map(
+  const categoryList = categoryIds ? categoryIds.map(
     categoryId => <Category key={categoryId} categoryId={categoryId} />
-  )
+  ) : null
 
   // console.log('Category List', props)
   return (

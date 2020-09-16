@@ -1,5 +1,7 @@
+import TabActionTypes from "./tabs.types";
 
 const INTIAL_STATE = {
+  totalTab: 3,
   byId: {
     "tab1": {
       id: "tab1",
@@ -26,7 +28,13 @@ const INTIAL_STATE = {
 const tabsReducer = (state = INTIAL_STATE, action) => {
 
   switch (action.type) {
-
+    case TabActionTypes.ADD_TAB:
+      return {
+        ...state,
+        byId: { ...state.byId, [action.payload.id]: action.payload },
+        allIds: [...state.allIds, action.payload.id],
+        totalTab: state.totalTab + 1,
+      }
     default:
       return state;
   }
