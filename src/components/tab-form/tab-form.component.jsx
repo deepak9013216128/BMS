@@ -44,6 +44,7 @@ const TabForm = ({ totalTabCount, addTab }) => {
             <form onSubmit={handleSubmit}>
               <FormInput
                 name='title'
+                value={name}
                 placeholder='Name'
                 type='text'
                 required

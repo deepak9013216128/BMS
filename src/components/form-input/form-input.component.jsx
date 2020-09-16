@@ -3,16 +3,17 @@ import React from "react";
 import './form-input.styles.css';
 
 const FormInput = (props) => {
-  const { name, type, required, placeholder, handleChange } = props;
+  const { name, value, type, required, placeholder, handleChange } = props;
   console.log(name)
   return (
     <div className="wrap-input100 validate-input">
       <input
-        className="input100"
+        className={`${value ? 'has-val' : ''} input100`}
         type={type}
         name={name}
         required={required}
         onChange={handleChange}
+        value={value}
       />
       <span className="focus-input100" data-placeholder={placeholder}></span>
     </div>
