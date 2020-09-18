@@ -6,7 +6,7 @@ import TabList from '../../components/tab-list/tab-list.component';
 import CategoryList from '../../components/category-list/category-list.component';
 import Footer from '../../components/footer/footer.component';
 
-import useActiveTab from '../../hooks/get-active-tab.hooks';
+import useActiveTab from '../../hooks/use-active-tab.hooks';
 
 import './dashboard.styles.css';
 

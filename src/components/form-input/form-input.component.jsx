@@ -4,7 +4,7 @@ import './form-input.styles.css';
 
 const FormInput = (props) => {
   const { name, value, type, required, placeholder, handleChange, pattern, maxLength, title } = props;
-  console.log(name)
+  // console.log(name)
   return (
     <div className="wrap-input100 validate-input">
       <input

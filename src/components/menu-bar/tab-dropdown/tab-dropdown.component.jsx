@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { deleteTab } from '../../../redux/tabs/tabs.action'
 
-import useActiveTab from '../../../hooks/get-active-tab.hooks';
+import useActiveTab from '../../../hooks/use-active-tab.hooks';
 
 const TabDropdown = ({ deleteTab }) => {
 
