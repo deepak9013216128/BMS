@@ -15,5 +15,5 @@ export const selectCategoryIds = () => createSelector(
 
 export const selectTotalTab = createSelector(
   [tabs],
-  tabs => tabs.totalTab
+  tabs => tabs.allIds.length
 )

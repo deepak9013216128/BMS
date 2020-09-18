@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CategoryDropdown = ({ toggleBookmarkForm }) => {
+const CategoryDropdown = () => {
 
   return (
     <div className="custom-dropdown">

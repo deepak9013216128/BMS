@@ -1,7 +1,7 @@
 import TabActionTypes from "./tabs.types";
+import { deleteTab } from './tabs.utils'
 
 const INTIAL_STATE = {
-  totalTab: 3,
   byId: {
     "tab1": {
       id: "tab1",
@@ -34,6 +34,11 @@ const tabsReducer = (state = INTIAL_STATE, action) => {
         byId: { ...state.byId, [action.payload.id]: action.payload },
         allIds: [...state.allIds, action.payload.id],
         totalTab: state.totalTab + 1,
+      }
+    case TabActionTypes.DELETE_TAB:
+      return {
+        ...state,
+        ...deleteTab(state, action.payload),
       }
     default:
       return state;

@@ -1,7 +1,4 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect';
 
 import Header from '../../components/header/header.component';
 import MenuBar from '../../components/menu-bar/menu-bar.component';
@@ -9,19 +6,13 @@ import TabList from '../../components/tab-list/tab-list.component';
 import CategoryList from '../../components/category-list/category-list.component';
 import Footer from '../../components/footer/footer.component';
 
-import { selectToggleBookmarkForm } from '../../redux/bookmarks/bookmarks.selector';
+import useActiveTab from '../../hooks/get-active-tab.hooks';
 
 import './dashboard.styles.css';
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+const Dashboard = () => {
 
-const Dashboard = ({ toggleBookmarkForm }) => {
-
-  const query = useQuery();
-  const activeTab = query.get('tab') ? query.get('tab') : 'tab1';
-
+  const activeTab = useActiveTab()
   console.log('Dashboard')
   return (
     <div className='dashboard'>
@@ -42,8 +33,4 @@ const Dashboard = ({ toggleBookmarkForm }) => {
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  toggleBookmarkForm: selectToggleBookmarkForm
-})
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;
