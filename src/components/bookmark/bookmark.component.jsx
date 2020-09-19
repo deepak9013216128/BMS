@@ -4,15 +4,18 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectBookmark } from '../../redux/bookmarks/bookmarks.selector';
 
+import useContextMenu from '../../hooks/use-context-menu.hooks';
+
+import BookmarkDropdowon from './bookmark-dropdown/bookmark-dropdowon.component';
 import './bookmark.styles.css';
 
 const Bookmark = (props) => {
-
-  const { bookmark } = props;
+  const { bookmark, bookmarkId } = props;
+  const { xPos, yPos, showMenu } = useContextMenu(bookmarkId);
   const { url, title } = bookmark;
   // console.log(props)
   return (
-    <div className="card-body p-2">
+    <div id={bookmarkId} className="card-body p-2">
       <p className='m-0'>
         <abbr title={title}>
           <a
@@ -23,6 +26,7 @@ const Bookmark = (props) => {
           >{title}</a>
         </abbr>
       </p>
+      {showMenu && <BookmarkDropdowon xPos={xPos} yPos={yPos} />}
     </div >
   )
 }

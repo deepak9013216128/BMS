@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import BookmarkForm from '../../bookmark-form/bookmark-form.component';
 
-import { toggleBookmarkForm } from '../../../redux/bookmarks/bookmarks.action';
+import { addBookmark } from '../../../redux/bookmarks/bookmarks.action';
 
 import './setting.styles.css';
 
-const Setting = ({ toggleBookmarkForm }) => {
+const Setting = ({ addBookmark }) => {
 
   return (
     <div className="custom-dropdown p-2">
@@ -20,7 +20,6 @@ const Setting = ({ toggleBookmarkForm }) => {
         <li>
           <Link
             to='#'
-            onClick={toggleBookmarkForm}
             data-toggle="modal"
             data-target="#add-bookmark"
             data-backdrop="static"
@@ -35,7 +34,7 @@ const Setting = ({ toggleBookmarkForm }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  toggleBookmarkForm: () => dispatch(toggleBookmarkForm())
+  addBookmark: () => dispatch(addBookmark())
 })
 
 export default connect(null, mapDispatchToProps)(Setting);

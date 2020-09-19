@@ -1,5 +1,5 @@
 const bookmarksActionTypes = {
-  TOGGLE_BOOKMARK_FORM: 'TOGGLE_BOOKMARK_FORM',
+  ADD_BOOKMARK: 'ADD_BOOKMARK'
 }
 
 export default bookmarksActionTypes;

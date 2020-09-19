@@ -1,7 +1,4 @@
 
-export const generateCategoryId = () => {
-  return Math.random()
-}
 export const addCategoryEntry = (state, action) => {
   const { payload } = action
   const { categoryId, name } = payload

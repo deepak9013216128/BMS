@@ -1,9 +1,9 @@
 import CategoryActionTypes from "./category.types";
-import { generateCategoryId } from './category.utils';
+import { generateId } from "../../utils/generate-id.utils";
 
 
 export const addCategory = (tabId, name) => {
-  const categoryId = generateCategoryId();
+  const categoryId = generateId();
   return {
     type: CategoryActionTypes.ADD_CATEGORY,
     payload: { tabId, categoryId, name }
