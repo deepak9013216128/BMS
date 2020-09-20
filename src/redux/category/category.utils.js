@@ -1,6 +1,5 @@
 
-export const addCategoryEntry = (state, action) => {
-  const { payload } = action
+export const addCategoryEntry = (state, payload) => {
   const { categoryId, name } = payload
 
   // Create our new Category object

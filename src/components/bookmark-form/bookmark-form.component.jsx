@@ -1,13 +1,35 @@
 import React, { memo } from 'react';
+import { connect } from 'react-redux';
 
-import './bookmark-form.styles.css'
+import { addBookmark } from '../../redux/bookmarks/bookmarks.action';
+
+import useFormInput from '../../hooks/use-form-input.hooks';
 
 import FormInput from '../form-input/form-input.component';
 import FormButton from '../form-button/form-button.component';
 import FormTextarea from '../form-textarea/form-textarea.component';
 
-const BookmarkForm = (props) => {
+import './bookmark-form.styles.css';
 
+const BookmarkForm = ({ addBookmark }) => {
+
+  const [bookmark, updadeBookmark] = useFormInput({
+    title: '',
+    url: '',
+    tags: '',
+    notes: ''
+  })
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    try {
+      addBookmark({ title, url, tags, notes })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const { title, url, tags, notes } = bookmark;
   return (
     <div id='add-bookmark' className='modal fade'>
       <div className="modal-dialog modal-add-bookmark">
@@ -17,28 +39,43 @@ const BookmarkForm = (props) => {
             <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div className="modal-body">
-            <form>
+            <form onSubmit={handleSubmit}>
               <FormInput
                 name='title'
+                value={title}
                 placeholder='Title'
                 type='text'
                 required
+                pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$"
+                maxLength="100"
+                title='3 and more Alphabetic letter'
+                handleChange={updadeBookmark}
               />
               <FormInput
                 name='url'
+                value={url}
                 placeholder='URL'
                 type='text'
                 required
+                maxLength="100"
+                title='3 and more Alphabetic letter'
+                handleChange={updadeBookmark}
               />
               <FormTextarea
                 name='tags'
+                value={tags}
                 placeholder='Seprate tags by commas'
                 type='text'
+                title='3 and more Alphabetic letter'
+                handleChange={updadeBookmark}
               />
               <FormTextarea
                 name='notes'
+                value={notes}
                 placeholder='Notes'
                 type='text'
+                title='3 and more Alphabetic letter'
+                handleChange={updadeBookmark}
               />
               <FormButton
                 type='submit'
@@ -52,4 +89,8 @@ const BookmarkForm = (props) => {
   )
 }
 
-export default memo(BookmarkForm);
+const mapDispatchToProps = dispatch => ({
+  addBookmark: (data) => dispatch(addBookmark(data))
+})
+
+export default memo(connect(null, mapDispatchToProps)(BookmarkForm));

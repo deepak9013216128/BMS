@@ -7,7 +7,7 @@ const categoryReducer = (state = INTIAL_STATE, action) => {
 
   switch (action.type) {
     case CategoryActionTypes.ADD_CATEGORY:
-      return addCategoryEntry(state, action)
+      return addCategoryEntry(state, action.payload)
     default:
       return state;
   }
