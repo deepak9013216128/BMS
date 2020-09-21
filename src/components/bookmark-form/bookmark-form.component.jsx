@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { addBookmark } from '../../redux/bookmarks/bookmarks.action';
+import { selectActiveCategoryId } from '../../redux/bookmarks/bookmarks.selector';
 
 import useFormInput from '../../hooks/use-form-input.hooks';
 
@@ -11,9 +13,9 @@ import FormTextarea from '../form-textarea/form-textarea.component';
 
 import './bookmark-form.styles.css';
 
-const BookmarkForm = ({ addBookmark }) => {
+const BookmarkForm = ({ categoryId, addBookmark }) => {
 
-  const [bookmark, updadeBookmark] = useFormInput({
+  const [bookmark, updadeBookmark, resetBookmark] = useFormInput({
     title: '',
     url: '',
     tags: '',
@@ -23,12 +25,18 @@ const BookmarkForm = ({ addBookmark }) => {
   const handleSubmit = e => {
     e.preventDefault()
     try {
-      addBookmark({ title, url, tags, notes })
+      addBookmark({ categoryId, title, url, tags: tags.split(','), notes })
+      window.jQuery("#add-bookmark").modal("hide");
+      resetBookmark({
+        title: '',
+        url: '',
+        tags: '',
+        notes: ''
+      })
     } catch (err) {
       console.log(err)
     }
   }
-
   const { title, url, tags, notes } = bookmark;
   return (
     <div id='add-bookmark' className='modal fade'>
@@ -89,8 +97,12 @@ const BookmarkForm = ({ addBookmark }) => {
   )
 }
 
+const mapStateToProps = createStructuredSelector({
+  categoryId: selectActiveCategoryId
+})
+
 const mapDispatchToProps = dispatch => ({
   addBookmark: (data) => dispatch(addBookmark(data))
 })
 
-export default memo(connect(null, mapDispatchToProps)(BookmarkForm));
+export default memo(connect(mapStateToProps, mapDispatchToProps)(BookmarkForm));

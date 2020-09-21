@@ -1,5 +1,6 @@
-const bookmarksActionTypes = {
+const BookmarksActionTypes = {
+  ACTIVE_CATEGORY: 'ACTIVE_CATEGORY',
   ADD_BOOKMARK: 'ADD_BOOKMARK'
 }
 
-export default bookmarksActionTypes;
+export default BookmarksActionTypes;

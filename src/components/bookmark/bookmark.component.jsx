@@ -6,7 +6,7 @@ import { selectBookmark } from '../../redux/bookmarks/bookmarks.selector';
 
 import useContextMenu from '../../hooks/use-context-menu.hooks';
 
-import BookmarkDropdowon from './bookmark-dropdown/bookmark-dropdowon.component';
+import BookmarkDropdowon from './bookmark-dropdown/bookmark-dropdown.component';
 import './bookmark.styles.css';
 
 const Bookmark = (props) => {

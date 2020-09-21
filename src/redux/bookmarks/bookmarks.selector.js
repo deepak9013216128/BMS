@@ -11,3 +11,8 @@ export const selectToggleBookmarkForm = createSelector(
   [bookmarks],
   bookmarks => bookmarks.toggleBookmarkForm
 )
+
+export const selectActiveCategoryId = createSelector(
+  [bookmarks],
+  bookmarks => bookmarks.activeCategoryId
+)

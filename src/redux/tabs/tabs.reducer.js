@@ -40,7 +40,7 @@ const tabsReducer = (state = INTIAL_STATE, action) => {
       return deleteTab(state, action)
 
     case CategoryActionTypes.ADD_CATEGORY:
-      return addCategory(state, action)
+      return addCategory(state, action.payload)
 
     default:
       return state;

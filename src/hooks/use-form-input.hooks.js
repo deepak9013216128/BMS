@@ -8,8 +8,9 @@ const useFormInput = (intialValue) => {
     const { name, value } = e.target;
     setState(state => ({ ...state, [name]: value }))
   }
+  const reset = intialValue => setState(intialValue)
 
-  return [state, handlleChange]
+  return [state, handlleChange, reset]
 
 }
 

@@ -1,18 +1,22 @@
 import bookmarks from './bookmarks.data';
-import bookmarksActionTypes from './bookmarks.types';
+import BookmarksActionTypes from './bookmarks.types';
 import { addBookmarkEntry } from './bookmarks.utils';
 
 const INTIAL_STATE = {
   ...bookmarks,
-  toggleBookmarkForm: false,
+  activeCategoryId: null,
 
 }
 
 const bookmarksReducer = (state = INTIAL_STATE, action) => {
 
   switch (action.type) {
-
-    case bookmarksActionTypes.ADD_BOOKMARK:
+    case BookmarksActionTypes.ACTIVE_CATEGORY:
+      return {
+        ...state,
+        activeCategoryId: action.payload
+      }
+    case BookmarksActionTypes.ADD_BOOKMARK:
       return addBookmarkEntry(state, action.payload)
 
     default:

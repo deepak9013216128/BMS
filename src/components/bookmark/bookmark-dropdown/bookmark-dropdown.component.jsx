@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { addBookmark } from '../../../redux/bookmarks/bookmarks.action';
 
 import './bookmark-dropdown.styles.css'
 
@@ -23,8 +20,4 @@ const BoomarkDropdown = ({ xPos, yPos }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  addBookmark: () => dispatch(addBookmark())
-})
-
-export default connect(null, mapDispatchToProps)(BoomarkDropdown);
+export default BoomarkDropdown;

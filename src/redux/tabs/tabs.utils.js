@@ -13,8 +13,7 @@ export const deleteTab = (state, action) => {
   }
 }
 
-export const addCategory = (state, action) => {
-  const { payload } = action
+export const addCategory = (state, payload) => {
   const { tabId, categoryId } = payload
 
   // Look up the correct tab, to simplify the rest of the code

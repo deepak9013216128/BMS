@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import BookmarkForm from '../../bookmark-form/bookmark-form.component';
-
-import { addBookmark } from '../../../redux/bookmarks/bookmarks.action';
+import { activeCategory } from '../../../redux/bookmarks/bookmarks.action';
 
 import './setting.styles.css';
 
-const Setting = ({ addBookmark }) => {
+const Setting = ({ categoryId, activeCategory }) => {
+
+  const handleClick = () => activeCategory(categoryId)
 
   return (
     <div className="custom-dropdown p-2">
@@ -24,17 +24,17 @@ const Setting = ({ addBookmark }) => {
             data-target="#add-bookmark"
             data-backdrop="static"
             data-keyboard="false"
+            onClick={handleClick}
           >Add Bookmark</Link>
         </li>
         <li><Link to='#'>Delete Category</Link></li>
       </ul>
-      <BookmarkForm />
     </div>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
-  addBookmark: () => dispatch(addBookmark())
+  activeCategory: (categoryId) => dispatch(activeCategory(categoryId))
 })
 
 export default connect(null, mapDispatchToProps)(Setting);

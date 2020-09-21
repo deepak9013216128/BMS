@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
 
 import Category from '../category/category.component';
+import BookmarkForm from '../bookmark-form/bookmark-form.component';
 import { selectCategoryIds } from '../../redux/tabs/tabs.selector';
 
 const CategoryList = (props) => {
@@ -18,6 +19,7 @@ const CategoryList = (props) => {
       {
         categoryList
       }
+      <BookmarkForm />
     </div>
   )
 }

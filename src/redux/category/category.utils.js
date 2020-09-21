@@ -15,3 +15,19 @@ export const addCategoryEntry = (state, payload) => {
     allIds: state.allIds.concat(categoryId)
   }
 }
+
+export const addBookmark = (state, payload) => {
+  const { categoryId, bookmarkId } = payload;
+  const category = state.byId[categoryId];
+
+  return {
+    ...state,
+    byId: {
+      ...state.byId,
+      [categoryId]: {
+        ...category,
+        bookmarks: category.bookmarks.concat(bookmarkId)
+      }
+    }
+  };
+}
