@@ -8,7 +8,7 @@ import { selectCategoryIds } from '../../redux/tabs/tabs.selector';
 
 import useContextMenu from '../../hooks/use-context-menu.hooks';
 
-import BookmarkDropdowon from '../bookmark/bookmark-dropdown/bookmark-dropdown.component';
+import BookmarkDropdowon from '../bookmark-dropdown/bookmark-dropdown.component';
 
 const CategoryList = (props) => {
   const { xPos, yPos, showMenu } = useContextMenu('bookmark');

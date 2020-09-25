@@ -11,8 +11,8 @@ const useContextMenu = () => {
   const handleContextMenu = useCallback((e) => {
     e.preventDefault();
     setState({
-      xPos: `${e.pageX}px`,
-      yPos: `${e.pageY}px`,
+      xPos: `${e.clientX}px`,
+      yPos: `${e.clientY}px`,
       showMenu: true,
     })
   }, []);
@@ -29,7 +29,7 @@ const useContextMenu = () => {
   useEffect(() => {
     const elements = document.getElementsByClassName('bookmark');
     for (let element of elements) {
-      element.addEventListener("contextmenu", handleContextMenu);
+      element.addEventListener("contextmenu", handleContextMenu, true);
     }
     return () => {
       for (let element of elements) {

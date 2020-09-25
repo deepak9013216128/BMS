@@ -1,3 +1,4 @@
+import category from "./category.data"
 
 export const addCategoryEntry = (state, payload) => {
   const { categoryId, name } = payload
@@ -30,4 +31,22 @@ export const addBookmark = (state, payload) => {
       }
     }
   };
+}
+
+export const deleteBookmark = (state, payload) => {
+  const { categoryId, bookmarkId } = payload;
+  const updateCategory = state.byId[categoryId];
+  const updatedBookmarksId = updateCategory.bookmarks.filter(id => id !== bookmarkId)
+
+
+  return {
+    ...state,
+    byId: {
+      ...state.byId,
+      [categoryId]: {
+        ...updateCategory,
+        bookmarks: updatedBookmarksId
+      }
+    }
+  }
 }
