@@ -6,11 +6,6 @@ export const activeCategory = (categoryId) => ({
   payload: categoryId
 })
 
-export const activeBookmark = (bookmarkData) => ({
-  type: BookmarksActionTypes.ACTIVE_BOOKMARK,
-  payload: bookmarkData
-})
-
 export const addBookmark = (data) => {
   const bookmarkId = generateId()
   return {

@@ -12,6 +12,7 @@ const Category = (props) => {
   const toggle = () => setActive((active) => !active)
   const { category, categoryId } = props;
   const { name, bookmarks } = category;
+
   // console.log("Category", props)
   return (
     <div id="accordion" className="col-12 col-sm-6 col-lg-4 mb-3">

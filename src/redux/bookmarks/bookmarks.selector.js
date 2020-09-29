@@ -16,7 +16,3 @@ export const selectActiveCategoryId = createSelector(
   [bookmarks],
   bookmarks => bookmarks.activeCategoryId
 )
-export const selectActiveBookmarkId = createSelector(
-  [bookmarks],
-  bookmarks => bookmarks.activeBookmarkId
-)

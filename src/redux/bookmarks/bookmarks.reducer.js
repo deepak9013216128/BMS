@@ -17,12 +17,6 @@ const bookmarksReducer = (state = INTIAL_STATE, action) => {
         ...state,
         activeCategoryId: action.payload
       }
-    case BookmarksActionTypes.ACTIVE_BOOKMARK:
-      return {
-        ...state,
-        activeBookmarkId: action.payload.bookmarkId,
-        activeCategoryId: action.payload.categoryId
-      }
     case BookmarksActionTypes.ADD_BOOKMARK:
       return addBookmarkEntry(state, action.payload)
 

@@ -1,4 +1,3 @@
-import { deleteBookmark } from "../category/category.utils";
 
 export const addBookmarkEntry = (state, payload) => {
   const { bookmarkId, categoryId, title, url, tags, notes } = payload;

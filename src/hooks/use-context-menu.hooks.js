@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useContextMenu = () => {
+const useContextMenu = (id) => {
   const [state, setState] = useState({
     xPos: '0px',
     yPos: '0px',
@@ -9,6 +9,7 @@ const useContextMenu = () => {
   const { xPos, yPos, showMenu } = state;
 
   const handleContextMenu = useCallback((e) => {
+    // console.log(e)
     e.preventDefault();
     setState({
       xPos: `${e.clientX}px`,
@@ -17,36 +18,32 @@ const useContextMenu = () => {
     })
   }, []);
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback((e) => {
+    console.log(e)
     showMenu && setState(s => {
       return { ...s, showMenu: false }
     });
   }, [showMenu]);
 
-
-
-
   useEffect(() => {
-    const elements = document.getElementsByClassName('bookmark');
-    for (let element of elements) {
-      element.addEventListener("contextmenu", handleContextMenu, true);
-    }
+    const element = document.getElementById(id);
+    element.addEventListener("contextmenu", handleContextMenu);
     return () => {
-      for (let element of elements) {
-        element.removeEventListener("contextmenu", handleContextMenu);
-      }
+      element.removeEventListener("contextmenu", handleContextMenu);
     };
-  }, [handleContextMenu]);
+  }, [handleContextMenu, id]);
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
+    document.addEventListener("contextmenu", handleClick);
     return () => {
       document.removeEventListener("click", handleClick);
+      document.removeEventListener("contextmenu", handleClick);
     };
   }, [handleClick]);
 
   useEffect(() => {
-    console.log(showMenu)
+    // console.log(showMenu)
     let flag = true;
     const handleScroll = () => {
       flag = showMenu && flag ? true : false;

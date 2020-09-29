@@ -1,23 +1,24 @@
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect'
 
 import { deleteBookmark } from '../../redux/bookmarks/bookmarks.action';
-import { selectActiveBookmarkId, selectActiveCategoryId } from '../../redux/bookmarks/bookmarks.selector';
 
 import './bookmark-dropdown.styles.css'
 
 const BoomarkDropdown = ({ bookmarkId, categoryId, xPos, yPos, deleteBookmark }) => {
 
-  console.log(bookmarkId)
   const handleClick = useCallback(() => {
     deleteBookmark({ bookmarkId, categoryId })
   }, [bookmarkId, categoryId, deleteBookmark])
 
+  const handleContextMenu = useCallback((e) => e.preventDefault(), [])
+
+  // console.log('BOOKMARK-DROPDOWN', bookmarkId)
   return (
     <div
       className="bookmark-dropdown position-fixed"
+      onContextMenu={handleContextMenu}
     >
       <ul style={{ top: yPos, left: xPos }}>
         <li><Link to='#'>Edit</Link></li>
@@ -29,13 +30,8 @@ const BoomarkDropdown = ({ bookmarkId, categoryId, xPos, yPos, deleteBookmark })
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  bookmarkId: selectActiveBookmarkId,
-  categoryId: selectActiveCategoryId
-})
-
 const mapDisptachToProps = dispatch => ({
   deleteBookmark: bookmarkData => dispatch(deleteBookmark(bookmarkData)),
 })
 
-export default connect(mapStateToProps, mapDisptachToProps)(BoomarkDropdown);
+export default connect(null, mapDisptachToProps)(BoomarkDropdown);

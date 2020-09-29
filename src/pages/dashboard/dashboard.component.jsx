@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import Header from '../../components/header/header.component';
 import MenuBar from '../../components/menu-bar/menu-bar.component';
@@ -10,10 +10,10 @@ import useActiveTab from '../../hooks/use-active-tab.hooks';
 
 import './dashboard.styles.css';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
   const activeTab = useActiveTab()
-  console.log('Dashboard')
+  console.log('Dashboard', props)
   return (
     <div className='dashboard'>
       <Header />
@@ -33,4 +33,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default memo(Dashboard);
