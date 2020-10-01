@@ -6,10 +6,12 @@ import './category.styles.css'
 import Setting from './setting/setting.component';
 import { selectCategory } from '../../redux/category/category.selector';
 import Bookmark from '../bookmark/bookmark.component';
+import { useMemo } from 'react';
 
 const Category = (props) => {
   const [active, setActive] = useState(true);
   const toggle = () => setActive((active) => !active)
+
   const { category, categoryId } = props;
   const { name, bookmarks } = category;
 
@@ -22,7 +24,7 @@ const Category = (props) => {
             <button className="btn btn-link text-light">{name}</button>
           </h5>
           <div className="ml-auto mb-0">
-            <Setting categoryId={categoryId} />
+            <Setting categoryId={categoryId} bookmarkIds={bookmarks} />
           </div>
           <div>
             <button className="btn btn-link text-light">

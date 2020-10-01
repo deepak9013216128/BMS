@@ -1,6 +1,7 @@
+import CategoryActionTypes from '../category/category.types';
 import bookmarks from './bookmarks.data';
 import BookmarksActionTypes from './bookmarks.types';
-import { addBookmarkEntry, deleteBookmarkEntery } from './bookmarks.utils';
+import { addBookmarkEntry, deleteBookmarkEntery, deleteBookmarksByCategory } from './bookmarks.utils';
 
 const INTIAL_STATE = {
   ...bookmarks,
@@ -22,7 +23,8 @@ const bookmarksReducer = (state = INTIAL_STATE, action) => {
 
     case BookmarksActionTypes.DELETE_BOOKMARK:
       return deleteBookmarkEntery(state, action.payload)
-
+    case CategoryActionTypes.DELETE_CATEGORY:
+      return deleteBookmarksByCategory(state, action.payload)
     default:
       return state;
   }

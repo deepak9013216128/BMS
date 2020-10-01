@@ -1,40 +1,47 @@
 import React from 'react';
+import { useCallback } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { activeCategory } from '../../../redux/bookmarks/bookmarks.action';
+import { deleteCategory } from '../../../redux/category/category.action';
 
+import useActiveTab from '../../../hooks/use-active-tab.hooks';
 import './setting.styles.css';
 
-const Setting = ({ categoryId, activeCategory }) => {
+const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory }) => {
 
+  const activeTab = useActiveTab();
   const handleClick = () => activeCategory(categoryId)
+
+  const handleDeleteCategory = useCallback(() => {
+    deleteCategory({ categoryId, activeTab, bookmarkIds })
+  }, [deleteCategory])
 
   return (
     <div className="custom-dropdown p-2">
       <ul className='custom-dropdown-section'>
-        <li><Link to='#'>Rename Category</Link></li>
-        <li><Link to='#'>Move to Another Tab</Link></li>
-        <li><Link to='#'>Sort A-Z</Link></li>
-        <li><Link to='#'>Sort Z-A</Link></li>
+        <li><span>Rename Category</span></li>
+        <li><span>Move to Another Tab</span></li>
+        <li><span>Sort A-Z</span></li>
+        <li><span>Sort Z-A</span></li>
         <li>
-          <Link
-            to='#'
+          <span
             data-toggle="modal"
             data-target="#add-bookmark"
             data-backdrop="static"
             data-keyboard="false"
             onClick={handleClick}
-          >Add Bookmark</Link>
+          >Add Bookmark</span>
         </li>
-        <li><Link to='#'>Delete Category</Link></li>
+        <li><span onClick={handleDeleteCategory}>Delete Category</span></li>
       </ul>
     </div>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
-  activeCategory: (categoryId) => dispatch(activeCategory(categoryId))
+  activeCategory: (categoryId) => dispatch(activeCategory(categoryId)),
+  deleteCategory: categoryData => dispatch(deleteCategory(categoryData))
 })
 
 export default connect(null, mapDispatchToProps)(Setting);

@@ -15,16 +15,18 @@ const BoomarkDropdown = ({ bookmarkId, categoryId, xPos, yPos, deleteBookmark })
   const handleContextMenu = useCallback((e) => e.preventDefault(), [])
 
   // console.log('BOOKMARK-DROPDOWN', bookmarkId)
+
+  // change the link into span
   return (
     <div
-      className="bookmark-dropdown position-fixed"
+      className="custom-dropdown bookmark-dropdown position-fixed"
       onContextMenu={handleContextMenu}
     >
       <ul style={{ top: yPos, left: xPos }}>
-        <li><Link to='#'>Edit</Link></li>
-        <li><Link to='#'>Copy URL</Link></li>
-        <li><Link to='#'>Move to another Category</Link></li>
-        <li><Link to='#' onClick={handleClick}>Delete</Link></li>
+        <li><span to='#'>Edit</span></li>
+        <li><span to='#'>Copy URL</span></li>
+        <li><span to='#'>Move to another Category</span></li>
+        <li><span to='#' onClick={handleClick}>Delete</span></li>
       </ul>
     </div>
   )

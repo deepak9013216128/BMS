@@ -395,12 +395,12 @@ header
 }
 
 .header-area .main-nav .nav li.submenu ,
-.custom-dropdown,.bookmark-dropdown {
+.custom-dropdown{
   position: relative;
   padding-right: 35px;
 }
 
-.custom-dropdown,.bookmark-dropdown {
+.custom-dropdown {
   padding-right: 0;
   cursor: pointer;
 }
@@ -428,8 +428,7 @@ header
 }
 
 .header-area .main-nav .nav li.submenu ul ,
-.custom-dropdown ul,
-.bookmark-dropdown ul {
+.custom-dropdown ul {
   position: absolute;
   width: 200px;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
@@ -444,8 +443,7 @@ header
 }
 
 .header-area .main-nav .nav li.submenu ul li,
-.custom-dropdown ul li,
-.bookmark-dropdown ul li {
+.custom-dropdown ul li {
   margin-left: 0px;
   padding-left: 0px;
   padding-right: 0px;
@@ -453,7 +451,7 @@ header
 
 .header-area .main-nav .nav li.submenu ul li a ,
 .custom-dropdown ul li a,
-.bookmark-dropdown ul li a {
+.custom-dropdown ul li span{
   display: block;
   background: #fff;
   color: #3b566e;
@@ -471,7 +469,7 @@ header
 
 .header-area .main-nav .nav li.submenu ul li a:before ,
 .custom-dropdown ul li a::before ,
-.bookmark-dropdown ul li a::before{
+.custom-dropdown ul li span::before {
   content: "";
   position: absolute;
   width: 0px;
@@ -488,7 +486,7 @@ header
 
 .header-area .main-nav .nav li.submenu ul li a:hover ,
 .custom-dropdown ul li a:hover,
-.bookmark-dropdown ul li a:hover {
+.custom-dropdown ul li span:hover {
   background: #fff;
   color: #f55858;
   padding-left: 25px;
@@ -496,7 +494,7 @@ header
 
 .header-area .main-nav .nav li.submenu ul li a:hover:before ,
 .custom-dropdown ul li a:hover:before,
-.bookmark-dropdown ul li a:hover:before {
+.custom-dropdown ul li span:hover:before{
   width: 3px;
 }
 

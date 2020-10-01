@@ -50,3 +50,17 @@ export const deleteBookmark = (state, payload) => {
     }
   }
 }
+
+export const deleteCategoryEntery = (state, payload) => {
+
+  const { categoryId } = payload;
+  const existingById = state.byId;
+  delete existingById[categoryId];
+  const updatedAllIds = state.allIds.filter(id => id !== categoryId);
+
+  return {
+    ...state,
+    byId: existingById,
+    allIds: updatedAllIds
+  }
+}

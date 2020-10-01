@@ -19,7 +19,7 @@ const useContextMenu = (id) => {
   }, []);
 
   const handleClick = useCallback((e) => {
-    console.log(e)
+    // console.log(e)
     showMenu && setState(s => {
       return { ...s, showMenu: false }
     });

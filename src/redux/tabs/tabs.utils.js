@@ -31,3 +31,18 @@ export const addCategory = (state, payload) => {
     }
   }
 }
+
+export const deleteCategoryById = (state, payload) => {
+  const { categoryId, activeTab } = payload;
+  const tab = state.byId[activeTab]
+  return {
+    ...state,
+    byId: {
+      ...state.byId,
+      [activeTab]: {
+        ...tab,
+        category: tab.category.filter(id => id !== categoryId)
+      }
+    }
+  }
+}

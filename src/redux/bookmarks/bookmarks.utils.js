@@ -32,3 +32,17 @@ export const deleteBookmarkEntery = (state, payload) => {
     byId: updatedById,
   }
 }
+
+export const deleteBookmarksByCategory = (state, payload) => {
+  const { bookmarkIds } = payload;
+
+  const updatedById = state.byId
+  bookmarkIds.forEach(id => delete updatedById[id])
+  const updatedAllIds = state.allIds.filter(id => !bookmarkIds.includes(id))
+
+  return {
+    ...state,
+    byId: updatedById,
+    allIds: updatedAllIds
+  }
+}

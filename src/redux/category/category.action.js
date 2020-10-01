@@ -9,3 +9,8 @@ export const addCategory = (tabId, name) => {
     payload: { tabId, categoryId, name }
   }
 }
+
+export const deleteCategory = (categoryData) => ({
+  type: CategoryActionTypes.DELETE_CATEGORY,
+  payload: categoryData
+})
