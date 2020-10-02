@@ -17,7 +17,7 @@ export const addCategoryEntry = (state, payload) => {
   }
 }
 
-export const addBookmark = (state, payload) => {
+export const addBookmarkById = (state, payload) => {
   const { categoryId, bookmarkId } = payload;
   const category = state.byId[categoryId];
 
@@ -33,7 +33,7 @@ export const addBookmark = (state, payload) => {
   };
 }
 
-export const deleteBookmark = (state, payload) => {
+export const deleteBookmarkById = (state, payload) => {
   const { categoryId, bookmarkId } = payload;
   const updateCategory = state.byId[categoryId];
   const updatedBookmarksId = updateCategory.bookmarks.filter(id => id !== bookmarkId)

@@ -24,7 +24,7 @@ export const addBookmarkEntry = (state, payload) => {
 export const deleteBookmarkEntery = (state, payload) => {
   const { bookmarkId } = payload;
   const updatedAllIds = state.allIds.filter(id => id !== bookmarkId)
-  const updatedById = state.byId
+  const updatedById = state.byId;
   delete updatedById[bookmarkId];
   return {
     ...state,
