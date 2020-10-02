@@ -8,12 +8,12 @@ const LandingPage = lazy(() => import('./pages/landing-page/landing-page.compone
 
 const addScripts = () => {
   const scripts = [
-    '/assets/js/owl-carousel.js',
-    '/assets/js/scrollreveal.min.js',
-    '/assets/js/waypoints.min.js',
-    '/assets/js/jquery.counterup.min.js',
-    '/assets/js/imgfix.min.js',
-    '/assets/js/custom.js'
+    'assets/js/owl-carousel.js',
+    'assets/js/scrollreveal.min.js',
+    'assets/js/waypoints.min.js',
+    'assets/js/jquery.counterup.min.js',
+    'assets/js/imgfix.min.js',
+    'assets/js/custom.js'
   ]
   scripts.forEach(file => {
     const script = document.createElement("script");
