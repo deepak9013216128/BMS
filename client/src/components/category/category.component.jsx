@@ -6,7 +6,6 @@ import './category.styles.css'
 import Setting from './setting/setting.component';
 import { selectCategory } from '../../redux/category/category.selector';
 import Bookmark from '../bookmark/bookmark.component';
-import { useMemo } from 'react';
 
 const Category = (props) => {
   const [active, setActive] = useState(true);

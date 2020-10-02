@@ -1,5 +1,3 @@
-import category from "./category.data"
-
 export const addCategoryEntry = (state, payload) => {
   const { categoryId, name } = payload
 

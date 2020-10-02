@@ -15,7 +15,7 @@ const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory }) =>
 
   const handleDeleteCategory = useCallback(() => {
     deleteCategory({ categoryId, activeTab, bookmarkIds })
-  }, [deleteCategory])
+  }, [deleteCategory, categoryId, activeTab, bookmarkIds])
 
   return (
     <div className="custom-dropdown p-2">
