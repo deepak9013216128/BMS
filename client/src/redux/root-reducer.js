@@ -5,19 +5,22 @@ import storage from 'redux-persist/lib/storage';
 import tabsReducer from './tabs/tabs.reducer';
 import categoryReducer from './category/category.reducer';
 import bookmarksReducer from './bookmarks/bookmarks.reducer';
+import userReducer from './user/user.reducer';
+import errorReducer from './error/error.reducer';
 
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'tabs', 'category', 'bookmarks']
+  whitelist: ['tabs', 'category', 'bookmarks']
 }
 
 const rootReducer = combineReducers({
-  user: [],
+  user: userReducer,
   tabs: tabsReducer,
   category: categoryReducer,
   bookmarks: bookmarksReducer,
+  error: errorReducer
 })
 
 export default persistReducer(persistConfig, rootReducer);

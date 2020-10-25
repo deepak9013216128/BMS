@@ -1,16 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { login } from '../../redux/user/user.action';
+import { selectAuthLoading } from '../../redux/user/user.selector';
+
+import useFormInput from '../../hooks/use-form-input.hooks';
+
+import FormInput from '../form-input/form-input.component';
+import FormButton from '../form-button/form-button.component';
 
 import Logo from '../assets/logo/logo_transparent.png';
 
 import './login.styles.css';
 
 const Login = (props) => {
+  const { login, authLoading } = props;
 
-  const SubmitLoginForm = (event) => {
+  const [user, updateUser, resetUser] = useFormInput({
+    email: '',
+    password: ''
+  })
+
+  const SubmitLoginForm = async (event) => {
     event.preventDefault();
+    login(email, password)
 
   }
+
+  const { email, password } = user;
   return (
     <div id="login" className="modal fade">
       <div className="modal-dialog modal-login">
@@ -24,13 +43,32 @@ const Login = (props) => {
           </div>
           <div className="modal-body">
             <form onSubmit={SubmitLoginForm}>
-              <div className="form-group">
-                <input type="text" className="form-control" name="username" placeholder="Username" required="required" />
-              </div>
-              <div className="form-group">
-                <input type="password" className="form-control" name="password" placeholder="Password" required="required" />
-              </div>
-              <div className="form-group">
+              <FormInput
+                name='email'
+                value={email}
+                placeholder='Email'
+                type='email'
+                required
+                maxLength="100"
+                title='3 and more Alphabetic letter'
+                handleChange={updateUser}
+              />
+              <FormInput
+                name='password'
+                value={password}
+                placeholder='Password'
+                type='password'
+                required
+                maxLength="100"
+                title='3 and more Alphabetic letter'
+                handleChange={updateUser}
+              />
+              <FormButton
+                type='submit'
+                label='Login'
+                isLoading={authLoading}
+              />
+              {/* <div className="form-group">
                 <button
                   type="submit"
                   data-toggle="modal"
@@ -41,7 +79,7 @@ const Login = (props) => {
                 >
                   Login
                 </button>
-              </div>
+              </div> */}
             </form>
           </div>
           <div className="modal-footer">
@@ -53,4 +91,12 @@ const Login = (props) => {
   )
 }
 
-export default Login;
+const mapStateToProps = createStructuredSelector({
+  authLoading: selectAuthLoading
+})
+
+const mapDispatchToProps = dispatch => ({
+  login: (email, password) => dispatch(login(email, password))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

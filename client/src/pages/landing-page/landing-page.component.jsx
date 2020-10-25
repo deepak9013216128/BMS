@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import SignUp from '../../components/signup/signup.component';
 import Login from '../../components/login/login.component';
-import ConfirmationPopup from '../../components/confirmation-popup/confirmation-popup.component';
+
 import Footer from '../../components/footer/footer.component';
 
 const LandingPage = (props) => {
@@ -125,7 +125,6 @@ const LandingPage = (props) => {
 			<Footer />
 			<SignUp />
 			<Login />
-			<ConfirmationPopup />
 		</div>
 	)
 };
