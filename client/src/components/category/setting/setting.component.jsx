@@ -2,16 +2,19 @@ import React from 'react';
 import { useCallback } from 'react';
 import { connect } from 'react-redux';
 
-import { activeCategory } from '../../../redux/bookmarks/bookmarks.action';
+import { activeCategory, removeActiveBookmark } from '../../../redux/bookmarks/bookmarks.action';
 import { deleteCategory } from '../../../redux/category/category.action';
 
 import useActiveTab from '../../../hooks/use-active-tab.hooks';
 import './setting.styles.css';
 
-const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory }) => {
+const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory, removeActiveBookmark }) => {
 
   const activeTab = useActiveTab();
-  const handleClick = () => activeCategory(categoryId)
+  const handleClick = () => {
+    removeActiveBookmark()
+    activeCategory(categoryId)
+  }
 
   const handleDeleteCategory = useCallback(() => {
     deleteCategory({ categoryId, activeTab, bookmarkIds })
@@ -40,7 +43,8 @@ const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory }) =>
 }
 
 const mapDispatchToProps = dispatch => ({
-  activeCategory: (categoryId) => dispatch(activeCategory(categoryId)),
+  removeActiveBookmark: () => dispatch(removeActiveBookmark()),
+  activeCategory: (categoryId) => dispatch(activeCategory(categoryId, null)),
   deleteCategory: categoryData => dispatch(deleteCategory(categoryData))
 })
 

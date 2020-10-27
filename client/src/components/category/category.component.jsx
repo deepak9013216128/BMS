@@ -14,7 +14,7 @@ const Category = (props) => {
   const { category, categoryId } = props;
   const { name, bookmarks } = category;
 
-  // console.log("Category", props)
+  console.log("Category", bookmarks)
   return (
     <div id="accordion" className="col-12 col-sm-6 col-lg-4 mb-3">
       <div className="card">

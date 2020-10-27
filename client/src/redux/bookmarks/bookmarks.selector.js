@@ -16,3 +16,8 @@ export const selectActiveCategoryId = createSelector(
   [bookmarks],
   bookmarks => bookmarks.activeCategoryId
 )
+
+export const selectActiveBookmark = createSelector(
+  [bookmarks],
+  bookmarks => bookmarks.byId[bookmarks.activeBookmarkId]
+)

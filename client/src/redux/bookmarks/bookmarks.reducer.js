@@ -16,7 +16,14 @@ const bookmarksReducer = (state = INTIAL_STATE, action) => {
     case BookmarksActionTypes.ACTIVE_CATEGORY:
       return {
         ...state,
-        activeCategoryId: action.payload
+        activeCategoryId: action.payload.categoryId,
+        activeBookmarkId: action.payload.bookmarkId
+      }
+    case BookmarksActionTypes.ROMOVE_ACTIVE_BOOKMARK:
+      return {
+        ...state,
+        activeCategoryId: null,
+        activeBookmarkId: null
       }
     case BookmarksActionTypes.ADD_BOOKMARK:
       return addBookmarkEntry(state, action.payload)

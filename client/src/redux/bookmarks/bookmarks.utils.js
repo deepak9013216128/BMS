@@ -10,10 +10,12 @@ export const addBookmarkEntry = (state, payload) => {
     tags,
     notes
   }
+  let updatedAllIds = state.allIds.filter(id => id.toString() !== bookmarkId.toString())
   return {
     ...state,
     activeCategoryId: null,
-    allIds: state.allIds.concat(bookmarkId),
+    activeBookmarkId: null,
+    allIds: updatedAllIds.concat(bookmarkId),
     byId: {
       ...state.byId,
       [bookmarkId]: bookmark

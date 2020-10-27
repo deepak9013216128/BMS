@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { addBookmark } from '../../redux/bookmarks/bookmarks.action';
-import { selectActiveCategoryId } from '../../redux/bookmarks/bookmarks.selector';
+import { selectActiveCategoryId, selectActiveBookmark } from '../../redux/bookmarks/bookmarks.selector';
 
 import useFormInput from '../../hooks/use-form-input.hooks';
 
@@ -12,26 +12,32 @@ import FormButton from '../form-button/form-button.component';
 import FormTextarea from '../form-textarea/form-textarea.component';
 
 import './bookmark-form.styles.css';
+import { useEffect } from 'react';
 
-const BookmarkForm = ({ categoryId, addBookmark }) => {
-
-  const [bookmark, updadeBookmark, resetBookmark] = useFormInput({
+const BookmarkForm = ({ categoryId, activeBookmark, addBookmark }) => {
+  console.log(categoryId, activeBookmark, activeBookmark ? activeBookmark.title : '')
+  const [bookmark, updadeBookmark, resetBookmark, update] = useFormInput({
     title: '',
     url: '',
     tags: '',
     notes: ''
   })
+  useEffect(() => {
+    update(activeBookmark)
+
+  }, [activeBookmark])
 
   const handleSubmit = e => {
     e.preventDefault()
     try {
-      addBookmark({ categoryId, title, url, tags: tags.split(','), notes })
+      addBookmark({ categoryId, title, url, tags: tags.split(','), notes, id: activeBookmark ? activeBookmark.id : null })
       window.jQuery("#add-bookmark").modal("hide");
       resetBookmark({
         title: '',
         url: '',
         tags: '',
-        notes: ''
+        notes: '',
+
       })
     } catch (err) {
       console.log(err)
@@ -98,7 +104,8 @@ const BookmarkForm = ({ categoryId, addBookmark }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  categoryId: selectActiveCategoryId
+  categoryId: selectActiveCategoryId,
+  activeBookmark: selectActiveBookmark
 })
 
 const mapDispatchToProps = dispatch => ({

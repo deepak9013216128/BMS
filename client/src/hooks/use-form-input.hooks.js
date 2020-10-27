@@ -8,9 +8,17 @@ const useFormInput = (intialValue) => {
     const { name, value } = e.target;
     setState(state => ({ ...state, [name]: value }))
   }
+  const update = activeBookmark => {
+    setState({
+      title: activeBookmark ? activeBookmark.title : '',
+      url: activeBookmark ? activeBookmark.url : '',
+      tags: activeBookmark ? activeBookmark.tags.join(',') : '',
+      notes: activeBookmark ? activeBookmark.notes : ''
+    })
+  }
   const reset = intialValue => setState(intialValue)
 
-  return [state, handlleChange, reset]
+  return [state, handlleChange, reset, update]
 
 }
 
