@@ -9,7 +9,7 @@ import './error-popup.styles.css';
 const ErrorPopup = ({ message, deleteError }) => {
 
   return (
-    <div id="errorPopup" className="modal fade">
+    <div id="errorPopup" className="modal fade" data-keyboard="false" data-backdrop="static">
       <div className="modal-dialog modal-error">
         <div className="modal-content">
           <div className="modal-header">
@@ -21,7 +21,7 @@ const ErrorPopup = ({ message, deleteError }) => {
           <div className="modal-body text-center">
             <h4>Ooops!</h4>
             <p>{message}</p>
-            <button className="btn btn-success" data-dismiss="modal">Try Again</button>
+            <button className="btn btn-success" data-dismiss="modal" onClick={() => deleteError()}>Try Again</button>
           </div>
         </div>
       </div>

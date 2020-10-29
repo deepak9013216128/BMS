@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+
+import { selectIsAdmin } from '../../redux/user/user.selector';
 
 import './header.styles.css';
 
 import Logo from '../assets/logo/logo_transparent.png';
 
-const Header = (props) => {
+const Header = ({ isAdmin }) => {
 
   return (
     <header className="header-area header-sticky background-header">
@@ -24,6 +28,7 @@ const Header = (props) => {
                   <Link to='#'>Tools</Link>
                   <ul>
                     <li><Link to="/">Install Browser Buttons</Link></li>
+                    {isAdmin && <li><Link to="/admin">Admin</Link></li>}
                   </ul>
                 </li>
                 <li className="submenu">
@@ -45,4 +50,8 @@ const Header = (props) => {
   )
 }
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  isAdmin: selectIsAdmin
+})
+
+export default connect(mapStateToProps, null)(Header);

@@ -19,7 +19,7 @@ const LandingPage = (props) => {
 								<ul className="nav">
 									<li className="scroll-to-section"><a href="#welcome" className="active">Home</a></li>
 									<li className="scroll-to-section"><a href="#about">About</a></li>
-									<li className="scroll-to-section"><a href="/dashboard">Services</a></li>
+									<li className="scroll-to-section"><a href="/dashboard">Dashboard</a></li>
 									<li className="submenu">
 										<a href="/">Drop Down</a>
 										<ul>

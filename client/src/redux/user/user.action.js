@@ -39,6 +39,7 @@ export const login = (email, password) => {
       .then(resData => {
         localStorage.setItem('token', resData.token);
         localStorage.setItem('userId', resData.userId);
+        localStorage.setItem('isAdmin', resData.isAdmin);
         const remainingMilliseconds = 60 * 60 * 1000;
         const expiryDate = new Date(
           new Date().getTime() + remainingMilliseconds
@@ -46,7 +47,8 @@ export const login = (email, password) => {
         localStorage.setItem('expiryDate', expiryDate.toISOString());
         dispatch(loginSuccess({
           token: resData.token,
-          userId: resData.userId
+          userId: resData.userId,
+          isAdmin: resData.isAdmin
         }));
         setAutoLogout(remainingMilliseconds, dispatch);
         window.location.reload();
@@ -99,10 +101,13 @@ export const signup = ({ name, email, password }) => {
         console.log(resData);
         dispatch(signupSuccess({
           token: null,
-          userId: null
+          userId: null,
+          isAdmin: null,
+          message: 'Signup Successfully!'
         }))
         window.jQuery("#signup").modal("hide");
         window.jQuery("#login").modal("show");
+        window.jQuery("#confirmationPopup").modal("show");
         // this.props.history.replace('/');
       })
       .catch(err => {
@@ -132,11 +137,13 @@ export const checkAuthenticationStatus = () => {
       return;
     }
     const userId = localStorage.getItem('userId');
+    const isAdmin = localStorage.getItem('isAdmin');
     const remainingMilliseconds =
       new Date(expiryDate).getTime() - new Date().getTime();
     dispatch(loginSuccess({
       token: token,
-      userId: userId
+      userId: userId,
+      isAdmin: isAdmin
     }));
     setAutoLogout(remainingMilliseconds, dispatch);
   }
@@ -153,4 +160,118 @@ const logoutHandler = (dispatch) => {
   localStorage.removeItem('token');
   localStorage.removeItem('expiryDate');
   localStorage.removeItem('userId');
+}
+
+export const userList = () => {
+
+  return dispatch => {
+    dispatch({ type: UserActionTypes.USERS_LIST_START });
+
+    FETCH({ url: API.USERS_LIST })
+      .then(res => {
+        if (res.status !== 200) {
+          throw new Error('Not Authorized')
+        }
+        return res.json()
+      })
+      .then(resData => {
+        dispatch({
+          type: UserActionTypes.USERS_LIST_SUCCESS,
+          payload: resData.users
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(({ type: UserActionTypes.USERS_LIST_FAILURE, payload: err }));
+      });
+  }
+}
+
+export const getUserDetails = () => {
+
+  return dispatch => {
+    dispatch({ type: UserActionTypes.USER_DETAILS_START });
+
+    FETCH({ url: API.USER_DETAILS })
+      .then(res => {
+        if (res.status !== 200) {
+          throw new Error('Not Authorized')
+        }
+        return res.json()
+      })
+      .then(resData => {
+        dispatch({
+          type: UserActionTypes.USER_DETAILS_SUCCESS,
+          payload: resData.user
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(setError(err))
+        dispatch(({ type: UserActionTypes.USER_DETAILS_FAILURE, payload: err }));
+      });
+  }
+}
+export const changePassword = (data) => {
+  console.log(data)
+  return dispatch => {
+    dispatch({ type: UserActionTypes.CHANGE_PASSWORD_START });
+
+    FETCH({ url: API.CHANGE_PASSWORD, method: 'PUT', body: JSON.stringify(data) })
+      .then(res => {
+        if (res.status !== 200) {
+          throw new Error('Not Authorized')
+        }
+        return res.json()
+      })
+      .then(resData => {
+        dispatch({
+          type: UserActionTypes.CHANGE_PASSWORD_SUCCESS,
+          payload: "Password Upadated!"
+        });
+        window.jQuery("#confirmationPopup").modal("show");
+        window.jQuery("#change-password").modal("hide");
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(setError(err))
+        window.jQuery("#errorPopup").modal("show");
+        dispatch(({ type: UserActionTypes.CHANGE_PASSWORD_FAILURE }));
+      });
+  }
+}
+
+export const removeMessage = () => ({
+  type: UserActionTypes.REMOVE_MESSAGE
+})
+
+export const deleteUser = (userId) => {
+  return dispatch => {
+    dispatch({ type: UserActionTypes.DELETE_USER_START, payload: userId });
+
+    FETCH({ url: API.DELETE_USER + userId, method: 'DELETE' })
+      .then(res => {
+        if (res.status !== 200) {
+          throw new Error('Not Authorized')
+        }
+        return res.json()
+      })
+      .then(resData => {
+        console.log(resData)
+        dispatch({
+          type: UserActionTypes.DELETE_USER_SUCCESS,
+          payload: {
+            message: `${resData.data.name} is deleted from System!`,
+            userId: userId
+          }
+        });
+        window.jQuery("#confirmationPopup").modal("show");
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(setError(err))
+        dispatch({ type: UserActionTypes.DELETE_USER_FAILURE })
+        window.jQuery("#errorPopup").modal("show");
+      });
+  }
 }

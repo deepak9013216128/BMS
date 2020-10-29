@@ -2,7 +2,7 @@ import React from 'react';
 
 import './success-popup.styles.css';
 
-const SuccessPopup = (props) => {
+const SuccessPopup = ({ message }) => {
 
   return (
     <div id="successPopup" className="modal fade">
@@ -16,7 +16,7 @@ const SuccessPopup = (props) => {
           </div>
           <div className="modal-body text-center">
             <h4>Great!</h4>
-            <p>Your account has been created successfully.</p>
+            <p>{message}</p>
             <button className="btn btn-success" data-dismiss="modal"><span>Start Exploring</span> <i className="material-icons">&#xE5C8;</i></button>
           </div>
         </div>

@@ -3,8 +3,8 @@ import { Route, Switch, Redirect, Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectIsAuth, selectCheckLogin } from './redux/user/user.selector';
-import { history, checkAuthenticationStatus } from './redux/user/user.action';
+import { selectIsAuth, selectCheckLogin, selectIsAdmin } from './redux/user/user.selector';
+import { history, userList, checkAuthenticationStatus } from './redux/user/user.action';
 
 import './App.css';
 
@@ -14,6 +14,8 @@ import ConfirmationPopup from './components/confirmation-popup/confirmation-popu
 // import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 const Dashboard = lazy(() => import('./pages/dashboard/dashboard.component'));
+const Admin = lazy(() => import('./pages/admin/admin.component'));
+const Profile = lazy(() => import('./pages/profile/profile.component'));
 const LandingPage = lazy(() => import('./pages/landing-page/landing-page.component'));
 
 const addScripts = () => {
@@ -32,11 +34,12 @@ const addScripts = () => {
   })
 }
 
-function App({ isAuth, checkLogin, checkAuthenticationStatus }) {
+function App({ isAuth, isAdmin, checkLogin, userList, checkAuthenticationStatus }) {
 
   useEffect(() => {
     checkAuthenticationStatus()
     addScripts();
+    userList();
   }, [checkAuthenticationStatus])
 
 
@@ -45,17 +48,20 @@ function App({ isAuth, checkLogin, checkAuthenticationStatus }) {
   if (!checkLogin) {
     if (isAuth) {
       routes = (
-        <Suspense fallback={<Preloader />}>
+        <Switch>
+          <Route exact path='/dashboard' component={Dashboard} />
+          <Route exact path='/admin' render={() => isAdmin ? <Admin /> : <Redirect to='/dashboard' />} />
+          <Route exact path='/profile' component={Profile} />
           <Route exact path='/' component={LandingPage} />
-          <Route path='/dashboard' component={Dashboard} />
-        </Suspense>
+          {/* <Redirect path="*" to='/' /> */}
+        </Switch>
       )
     } else {
       routes = (
-        <Suspense fallback={<Preloader />}>
+        <Switch>
           <Route exact path='/' component={LandingPage} />
           <Redirect path="*" to='/' />
-        </Suspense>
+        </Switch>
 
       )
     }
@@ -64,9 +70,9 @@ function App({ isAuth, checkLogin, checkAuthenticationStatus }) {
 
   return (
     <Router history={history}>
-      <Switch>
+      <Suspense fallback={<Preloader />}>
         {routes}
-      </Switch>
+      </Suspense>
       <ErrorPop />
       <ConfirmationPopup />
     </Router >
@@ -74,10 +80,12 @@ function App({ isAuth, checkLogin, checkAuthenticationStatus }) {
 }
 const mapStateToProps = createStructuredSelector({
   isAuth: selectIsAuth,
+  isAdmin: selectIsAdmin,
   checkLogin: selectCheckLogin
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkAuthenticationStatus: () => dispatch(checkAuthenticationStatus())
+  checkAuthenticationStatus: () => dispatch(checkAuthenticationStatus()),
+  userList: () => dispatch(userList())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -14,6 +14,10 @@ export const API = {
   'GET_TABS': URL + '/tab',
   'GET_TAB': URL + '/tab/',
   'DELETE_TAB': URL + '/tab/',
+  "USERS_LIST": URL + '/auth/users',
+  "USER_DETAILS": URL + '/auth/user',
+  'CHANGE_PASSWORD': URL + '/auth/change-password',
+  'DELETE_USER': URL + '/auth/user/'
 }
 
 export const FETCH = ({ url, method, body }) => {
