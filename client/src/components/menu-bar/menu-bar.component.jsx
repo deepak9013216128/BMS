@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CategoryForm from '../category-form/category-form.component';
+import CustomSearch from '../custom-search/custom-search.component';
 import TabForm from '../tab-form/tab-form.component';
 import CategoryDropdown from './category-dropdown/category-dropdown.component';
 import TabDropdown from './tab-dropdown/tab-dropdown.component';
@@ -32,6 +33,7 @@ const MenuBar = (props) => {
       </Link>
       <CategoryDropdown />
       <TabDropdown />
+      <CustomSearch />
       <CategoryForm />
       <TabForm />
     </nav>

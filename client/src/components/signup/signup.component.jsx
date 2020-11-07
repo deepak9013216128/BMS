@@ -104,9 +104,9 @@ const SignUp = (props) => {
               />
             </form>
           </div>
-          <div className="modal-footer" data-toggle="modal" aria-hidden="true" data-target="#login" data-dismiss="modal">
+          {/* <div className="modal-footer" data-toggle="modal" aria-hidden="true" data-target="#login" data-dismiss="modal">
             <Link to='#'>Login</Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

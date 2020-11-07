@@ -19,7 +19,15 @@ const LandingPage = (props) => {
 								<ul className="nav">
 									<li className="scroll-to-section"><a href="#welcome" className="active">Home</a></li>
 									<li className="scroll-to-section"><a href="#about">About</a></li>
-									<li className="scroll-to-section"><a href="/dashboard">Dashboard</a></li>
+									{!localStorage.getItem('userId') ? (
+										<li className="scroll-to-section">
+											<div data-toggle="modal" aria-hidden="true" data-target="#login" data-dismiss="modal">
+												<Link to='#'>Login</Link>
+											</div>
+										</li>
+									) : (
+											<li className="scroll-to-section"><Link to="/dashboard">Dashboard</Link></li>
+										)}
 									<li className="submenu">
 										<a href="/">Drop Down</a>
 										<ul>

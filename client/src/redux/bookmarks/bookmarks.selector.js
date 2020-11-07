@@ -21,3 +21,14 @@ export const selectActiveBookmark = createSelector(
   [bookmarks],
   bookmarks => bookmarks.byId[bookmarks.activeBookmarkId]
 )
+
+export const selectBookmarks = createSelector(
+  [bookmarks],
+  bookmarks => {
+    return bookmarks.allIds.map(id => ({
+      title: bookmarks.byId[id].title,
+      url: bookmarks.byId[id].url,
+      tags: bookmarks.byId[id].tags,
+    }))
+  }
+)

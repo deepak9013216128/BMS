@@ -27,13 +27,16 @@ export const login = (email, password) => {
       body: JSON.stringify({ email, password })
     })
       .then(res => {
+        let errorMessage;
         if (res.status === 422) {
-          throw new Error('Validation failed.');
+          errorMessage = 'Validation failed. Password must be minimum 5 character';
         }
-        if (res.status !== 200 && res.status !== 201) {
-          console.log('Error!');
-          throw new Error('Could not authenticate you!');
+        else if (res.status === 500) {
+          errorMessage = 'Internal server error.';
+        } else if (res.status === 401) {
+          errorMessage = 'Wrong email address and password!';
         }
+        if (errorMessage) throw new Error(errorMessage)
         return res.json();
       })
       .then(resData => {
@@ -77,7 +80,7 @@ export const signup = ({ name, email, password }) => {
     type: UserActionTypes.SIGNUP_FAILURE,
     payload: resData
   })
-
+  let isError = false;
   return dispatch => {
     dispatch(signupStart())
     FETCH({
@@ -86,19 +89,27 @@ export const signup = ({ name, email, password }) => {
       body: JSON.stringify({ name, email, password })
     })
       .then(res => {
-        if (res.status === 422) {
-          throw new Error(
-            "Validation failed. Make sure the email address isn't used yet!"
-          );
-        }
-        if (res.status !== 200 && res.status !== 201) {
-          console.log('Error!');
-          throw new Error('Creating a user failed!');
+        if (res.status === 422 || res.status === 500) {
+          isError = res.status;
         }
         return res.json();
       })
       .then(resData => {
-        console.log(resData);
+        if (isError) {
+          let errorMessage = 'Validation failed. ';
+          if (isError === 422) {
+            if (resData.data.find(error => error.param === 'email')) {
+              errorMessage += "Make sure the email address isn't used yet! "
+            }
+            if (resData.data.find(error => error.param === 'password')) {
+              errorMessage += 'Password must be minimum 5 character. ';
+            }
+          }
+          else if (isError === 500) {
+            errorMessage = 'Internal server error.';
+          }
+          throw new Error(errorMessage)
+        }
         dispatch(signupSuccess({
           token: null,
           userId: null,
@@ -106,7 +117,7 @@ export const signup = ({ name, email, password }) => {
           message: 'Signup Successfully!'
         }))
         window.jQuery("#signup").modal("hide");
-        window.jQuery("#login").modal("show");
+        // window.jQuery("#login").modal("show");
         window.jQuery("#confirmationPopup").modal("show");
         // this.props.history.replace('/');
       })

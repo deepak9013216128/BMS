@@ -8,7 +8,7 @@ import { deleteCategory } from '../../../redux/category/category.action';
 import useActiveTab from '../../../hooks/use-active-tab.hooks';
 import './setting.styles.css';
 
-const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory, removeActiveBookmark }) => {
+const Setting = ({ categoryId, bookmarkIds, sortBookmarks, activeCategory, deleteCategory, removeActiveBookmark }) => {
 
   const activeTab = useActiveTab();
   const handleClick = () => {
@@ -25,8 +25,8 @@ const Setting = ({ categoryId, bookmarkIds, activeCategory, deleteCategory, remo
       <ul className='custom-dropdown-section'>
         <li><span>Rename Category</span></li>
         <li><span>Move to Another Tab</span></li>
-        <li><span>Sort A-Z</span></li>
-        <li><span>Sort Z-A</span></li>
+        <li><span onClick={() => sortBookmarks('ascending')}>Sort A-Z</span></li>
+        <li><span onClick={() => sortBookmarks('descending')}>Sort Z-A</span></li>
         <li>
           <span
             data-toggle="modal"
