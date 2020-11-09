@@ -1,24 +1,17 @@
 
 export const addBookmarkEntry = (state, payload) => {
-  const { bookmarkId, categoryId, title, url, tags, notes } = payload;
+  const { id, categoryId } = payload;
 
-  const bookmark = {
-    id: bookmarkId,
-    categoryId,
-    title,
-    url,
-    tags,
-    notes
-  }
-  let updatedAllIds = state.allIds.filter(id => id.toString() !== bookmarkId.toString())
+  let updatedAllIds = state.allIds.filter(bookmarkId => bookmarkId !== id)
   return {
     ...state,
     activeCategoryId: null,
     activeBookmarkId: null,
-    allIds: updatedAllIds.concat(bookmarkId),
+    isBookmarkAdding: false,
+    allIds: updatedAllIds.concat(id),
     byId: {
       ...state.byId,
-      [bookmarkId]: bookmark
+      [id]: payload
     }
   }
 }

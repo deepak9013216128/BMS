@@ -43,15 +43,16 @@ const bookmarksReducer = (state = INTIAL_STATE, action) => {
         isBookmarkAdding: true
       }
     case BookmarksActionTypes.ADD_BOOKMARK_SUCCESS:
-      return {
-        ...state,
-        isBookmarkAdding: false,
-        allIds: state.allIds.concat(action.payload.id),
-        byId: {
-          ...state.byId,
-          [action.payload.id]: action.payload
-        }
-      }
+      return addBookmarkEntry(state, action.payload)
+    // return {
+    //   ...state,
+    //   isBookmarkAdding: false,
+    //   allIds: state.allIds.concat(action.payload.id),
+    //   byId: {
+    //     ...state.byId,
+    //     [action.payload.id]: action.payload
+    //   }
+    // }
     case BookmarksActionTypes.ADD_BOOKMARK_FAILURE:
       return {
         ...state,

@@ -16,6 +16,7 @@ const CustomSearch = ({ bookmarks }) => {
     setSearch(e.target.value)
   }
   let body = bookmarks.filter(bookmark => bookmark.title.toLowerCase().includes(search))
+  console.log(search, body)
   // let body = bookmarks.filter(bookmark => bookmark.tags.toLowerCase().includes(search))
   return (
     <div className='custom-search'>
@@ -27,7 +28,7 @@ const CustomSearch = ({ bookmarks }) => {
         title='3 and more Alphabetic letter'
         handleChange={handleChange}
       />
-      <div className={`dropdown-menu drop-menu ${search.length > 1 && body.length > 1 ? 'show' : ''}`}>
+      <div className={`dropdown-menu drop-menu ${search.length > 1 && body.length >= 1 ? 'show' : ''}`}>
         {
           body.map((item, idx) => (
             <a

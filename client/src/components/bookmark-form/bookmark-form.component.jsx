@@ -36,7 +36,7 @@ const BookmarkForm = ({ categoryId, isBookmarkAdding, activeBookmark, addBookmar
         url,
         tags: tags.split(','),
         notes,
-        // id: activeBookmark ? activeBookmark.id : null
+        id: activeBookmark ? activeBookmark.id : null
       })
       // resetBookmark({
       //   title: '',

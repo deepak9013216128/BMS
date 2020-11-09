@@ -3,6 +3,7 @@ import { generateId } from '../../utils/generate-id.utils';
 import { API, FETCH } from '../../utils/api';
 import { setError } from '../error/error.action';
 import CategoryActionTypes from '../category/category.types';
+import bookmarks from './bookmarks.data';
 
 export const activeCategory = (categoryId, bookmarkId) => ({
   type: BookmarksActionTypes.ACTIVE_CATEGORY,
@@ -70,11 +71,12 @@ export const fetchBookmarks = () => {
 }
 
 export const addBookmark = (BookmarkData) => {
+  console.log(BookmarkData, API.POST_BOOKMARK + (BookmarkData.id ? BookmarkData.id : ""))
   return dispatch => {
     dispatch({ type: BookmarksActionTypes.ADD_BOOKMARK_START })
     FETCH({
-      url: API.POST_BOOKMARK,
-      method: 'POST',
+      url: API.POST_BOOKMARK + (BookmarkData.id ? BookmarkData.id : ""),
+      method: BookmarkData.id ? 'PUT' : 'POST',
       body: JSON.stringify(BookmarkData)
     })
       .then(res => {
@@ -92,7 +94,7 @@ export const addBookmark = (BookmarkData) => {
         return res.json();
       })
       .then(resData => {
-        console.log(resData)
+        // console.log(resData)
         dispatch({
           type: BookmarksActionTypes.ADD_BOOKMARK_SUCCESS,
           payload: {

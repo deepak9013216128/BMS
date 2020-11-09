@@ -41,7 +41,8 @@ const categoryReducer = (state = INTIAL_STATE, action) => {
             ? category
             : ({
               ...category,
-              bookmarks: [...category.bookmarks, action.payload.id]
+              bookmarks: category.bookmarks.filter(id => id !== action.payload.id).concat(action.payload.id)
+              // [...category.bookmarks, action.payload.id]
             })
         ),
       }
