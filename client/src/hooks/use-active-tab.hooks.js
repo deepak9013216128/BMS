@@ -4,9 +4,9 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const useActiveTab = () => {
+const useActiveTab = (firstTab) => {
   const query = useQuery();
-  const activeTab = query.get('tab') ? query.get('tab') : 'tab1';
+  const activeTab = query.get('tab') ? query.get('tab') : firstTab;
   return activeTab;
 }
 

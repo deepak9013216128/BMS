@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { addBookmark } from '../../redux/bookmarks/bookmarks.action';
-import { selectActiveCategoryId, selectActiveBookmark } from '../../redux/bookmarks/bookmarks.selector';
+import { selectIsBookmarkAdding, selectActiveCategoryId, selectActiveBookmark } from '../../redux/bookmarks/bookmarks.selector';
 
 import useFormInput from '../../hooks/use-form-input.hooks';
 
@@ -14,7 +14,7 @@ import FormTextarea from '../form-textarea/form-textarea.component';
 import './bookmark-form.styles.css';
 import { useEffect } from 'react';
 
-const BookmarkForm = ({ categoryId, activeBookmark, addBookmark }) => {
+const BookmarkForm = ({ categoryId, isBookmarkAdding, activeBookmark, addBookmark }) => {
   console.log(categoryId, activeBookmark, activeBookmark ? activeBookmark.title : '')
   const [bookmark, updadeBookmark, resetBookmark, update] = useFormInput({
     title: '',
@@ -30,15 +30,20 @@ const BookmarkForm = ({ categoryId, activeBookmark, addBookmark }) => {
   const handleSubmit = e => {
     e.preventDefault()
     try {
-      addBookmark({ categoryId, title, url, tags: tags.split(','), notes, id: activeBookmark ? activeBookmark.id : null })
-      window.jQuery("#add-bookmark").modal("hide");
-      resetBookmark({
-        title: '',
-        url: '',
-        tags: '',
-        notes: '',
-
+      addBookmark({
+        _id: categoryId,
+        title,
+        url,
+        tags: tags.split(','),
+        notes,
+        // id: activeBookmark ? activeBookmark.id : null
       })
+      // resetBookmark({
+      //   title: '',
+      //   url: '',
+      //   tags: '',
+      //   notes: '',
+      // })
     } catch (err) {
       console.log(err)
     }
@@ -94,6 +99,7 @@ const BookmarkForm = ({ categoryId, activeBookmark, addBookmark }) => {
               <FormButton
                 type='submit'
                 label='Add'
+                isLoading={isBookmarkAdding}
               />
             </form>
           </div>
@@ -105,7 +111,8 @@ const BookmarkForm = ({ categoryId, activeBookmark, addBookmark }) => {
 
 const mapStateToProps = createStructuredSelector({
   categoryId: selectActiveCategoryId,
-  activeBookmark: selectActiveBookmark
+  activeBookmark: selectActiveBookmark,
+  isBookmarkAdding: selectIsBookmarkAdding
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -22,7 +22,6 @@ const Category = (props) => {
   const toggle = () => setActive((active) => !active)
 
   const { category, categoryId, bookmarksById } = props;
-  const { name, bookmarks } = category;
   const [bmark, setBmark] = useState(bookmarksById)
   useEffect(() => {
     setBmark(bookmarksById)
@@ -38,13 +37,16 @@ const Category = (props) => {
     // console.log(bmark)
   }, [])
 
+  if (!category) return <div></div>
+  const { title, bookmarks } = category;
+
   console.log("Category", bmark)
   return (
     <div id="accordion" className="col-12 col-sm-6 col-lg-4 mb-3">
       <div className="card">
         <div className="card-header p-0 d-flex category_title_background">
           <h5 className="mb-0">
-            <button className="btn btn-link text-light">{name}</button>
+            <button className="btn btn-link text-light">{title}</button>
           </h5>
           <div className="ml-auto mb-0">
             <Setting categoryId={categoryId} bookmarkIds={bookmarks} sortBookmarks={sortBookmarks} />

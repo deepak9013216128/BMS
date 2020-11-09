@@ -12,7 +12,8 @@ import errorReducer from './error/error.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['tabs', 'category', 'bookmarks']
+  // whitelist: ['tabs', 'category', 'bookmarks']
+  whitelist: []
 }
 
 const rootReducer = combineReducers({

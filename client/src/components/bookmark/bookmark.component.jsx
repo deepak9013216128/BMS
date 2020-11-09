@@ -14,9 +14,11 @@ const Bookmark = (props) => {
 
   const { xPos, yPos, showMenu } = useContextMenu(bookmarkId)
 
+  console.log('BOOKMARK', bookmarkId, categoryId)
+  // if (true) return <div id={bookmarkId} ></div>
+
   const { url, title } = bookmark;
 
-  console.log('BOOKMARK', bookmarkId)
   return (
     <div id={bookmarkId} className="card-body p-2">
       <p className='m-0 bookmark'>

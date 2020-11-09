@@ -1,24 +1,28 @@
 import React, { memo, useState } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../form-input/form-input.component';
 import FormButton from '../form-button/form-button.component';
 
 import { addCategory } from '../../redux/category/category.action';
+import { selectFirstTab } from '../../redux/tabs/tabs.selector';
+import { selectIsCategoryAdding } from '../../redux/category/category.selector';
 
 import useActiveTab from '../../hooks/use-active-tab.hooks.js';
 
-const CategoryForm = ({ addCategory }) => {
+const CategoryForm = ({ firstTab, isCategoryAdding, addCategory }) => {
   const [name, setName] = useState('');
   const handleChange = e => setName(e.target.value)
-  const tabId = useActiveTab()
+  const tabId = useActiveTab(firstTab)
+  // console.log(tabId)
 
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      addCategory(tabId, name)
-      setName('')
-      window.jQuery("#add-category").modal("hide");
+      addCategory({ _id: tabId, title: name })
+      // setName('')
+
     } catch (err) {
       console.log(err)
     }
@@ -47,6 +51,7 @@ const CategoryForm = ({ addCategory }) => {
               <FormButton
                 type='submit'
                 label='Add'
+                isLoading={isCategoryAdding}
               />
             </form>
           </div>
@@ -56,8 +61,13 @@ const CategoryForm = ({ addCategory }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  addCategory: (tabId, name) => dispatch(addCategory(tabId, name))
+const mapStateToProps = createStructuredSelector({
+  firstTab: selectFirstTab,
+  isCategoryAdding: selectIsCategoryAdding
 })
 
-export default memo(connect(null, mapDispatchToProps)(CategoryForm));
+const mapDispatchToProps = dispatch => ({
+  addCategory: (categoryData) => dispatch(addCategory(categoryData))
+})
+
+export default memo(connect(mapStateToProps, mapDispatchToProps)(CategoryForm));

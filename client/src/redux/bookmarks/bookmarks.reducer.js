@@ -4,9 +4,13 @@ import BookmarksActionTypes from './bookmarks.types';
 import { addBookmarkEntry, deleteBookmarkEntery, deleteBookmarksByCategory } from './bookmarks.utils';
 
 const INTIAL_STATE = {
-  ...bookmarks,
+  // ...bookmarks,
   activeCategoryId: null,
   activeBookmarkId: null,
+  isBookmarkLoading: true,
+  isBookmarkAdding: false,
+  allIds: [],
+  byId: {}
 }
 
 const bookmarksReducer = (state = INTIAL_STATE, action) => {
@@ -25,11 +29,41 @@ const bookmarksReducer = (state = INTIAL_STATE, action) => {
         activeCategoryId: null,
         activeBookmarkId: null
       }
-    case BookmarksActionTypes.ADD_BOOKMARK:
-      return addBookmarkEntry(state, action.payload)
-
-    case BookmarksActionTypes.DELETE_BOOKMARK:
-      return deleteBookmarkEntery(state, action.payload)
+    case BookmarksActionTypes.GET_BOOKMARKS_SUCCESS:
+    case BookmarksActionTypes.GET_BOOKMARKS_FAILURE:
+      return {
+        ...state,
+        isBookmarkLoading: false,
+        byId: action.payload.byId,
+        allIds: action.payload.allIds
+      }
+    case BookmarksActionTypes.ADD_BOOKMARK_START:
+      return {
+        ...state,
+        isBookmarkAdding: true
+      }
+    case BookmarksActionTypes.ADD_BOOKMARK_SUCCESS:
+      return {
+        ...state,
+        isBookmarkAdding: false,
+        allIds: state.allIds.concat(action.payload.id),
+        byId: {
+          ...state.byId,
+          [action.payload.id]: action.payload
+        }
+      }
+    case BookmarksActionTypes.ADD_BOOKMARK_FAILURE:
+      return {
+        ...state,
+        isBookmarkAdding: false,
+      }
+    case BookmarksActionTypes.DELETE_BOOKMARK_SUCCESS:
+      return {
+        ...state,
+        allIds: state.allIds.filter(bookmark =>
+          bookmark.id !== action.payload.bookmarkId
+        )
+      }
     case CategoryActionTypes.DELETE_CATEGORY:
       return deleteBookmarksByCategory(state, action.payload)
     default:

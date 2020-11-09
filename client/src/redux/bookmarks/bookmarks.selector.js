@@ -32,3 +32,8 @@ export const selectBookmarks = createSelector(
     }))
   }
 )
+
+export const selectIsBookmarkAdding = createSelector(
+  [bookmarks],
+  bookmarks => bookmarks.isBookmarkAdding
+)

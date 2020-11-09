@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { addTab } from '../../redux/tabs/tabs.action';
-import { selectTotalTab } from '../../redux/tabs/tabs.selector';
+import { selectIsTabAdding } from '../../redux/tabs/tabs.selector';
 
 import FormInput from '../form-input/form-input.component';
 import FormButton from '../form-button/form-button.component';
 import { useState } from 'react';
 
 
-const TabForm = ({ totalTabCount, addTab }) => {
+const TabForm = ({ addTab, isTabAdding }) => {
 
   const [name, setName] = useState('');
 
@@ -18,15 +18,8 @@ const TabForm = ({ totalTabCount, addTab }) => {
   const handleSubmit = e => {
     e.preventDefault();
     try {
-      const tab = {
-        id: `tab${totalTabCount + 1}`,
-        name: name.trim(),
-        body: '...',
-        category: []
-      }
+      const tab = { title: name.trim() }
       addTab(tab)
-      setName('')
-      window.jQuery("#add-tab").modal("hide");
     } catch (err) {
       console.log(err)
     }
@@ -56,6 +49,7 @@ const TabForm = ({ totalTabCount, addTab }) => {
               <FormButton
                 type='submit'
                 label='Add'
+                isLoading={isTabAdding}
               />
             </form>
           </div>
@@ -66,7 +60,7 @@ const TabForm = ({ totalTabCount, addTab }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  totalTabCount: selectTotalTab
+  isTabAdding: selectIsTabAdding
 })
 
 const mapDispatchToProps = dispatch => ({
